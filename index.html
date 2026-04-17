@@ -25,7 +25,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     /* ============================================
-       THE FURNITURE MARKET × DREAMFINDER LANDING PAGE
+       BEL FURNITURE × DREAMFINDER LANDING PAGE
        ============================================
        CUSTOMIZATION: Store branding is now loaded from
        data/store-config.json — edit that file to rebrand.
@@ -33,9 +33,9 @@
        ============================================ */
     :root {
       /* Store Brand Colors */
-      --store-primary: #4E7C9B;        /* Default store color — overridden by store-config.json */
-      --store-primary-light: #6394B0;
-      --store-primary-glow: rgba(78, 124, 155, 0.15);
+      --store-primary: #8B1A1A;        /* Default store color — overridden by store-config.json */
+      --store-primary-light: #a52525;
+      --store-primary-glow: rgba(139, 26, 26, 0.15);
 
       /* DreamFinder Core Palette */
       --navy: #0f1f33;
@@ -2471,7 +2471,7 @@
 
     .card-image {
       width: 100%;
-      height: 180px;
+      height: 100px;
       border-radius: 8px;
       overflow: hidden;
       margin-bottom: 0.6rem;
@@ -2481,7 +2481,7 @@
     .card-image img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
     }
 
     .card-header {
@@ -3312,7 +3312,7 @@
       }
       
       .card-image {
-        height: 160px;
+        height: 120px;
       }
     }
 
@@ -3341,9 +3341,10 @@
 
   <header class="header">
     <div class="brand-lockup">
-      <!-- Store Logo — replace src with actual logo file when available -->
+      <!-- Store Logo — swap for <img> when using actual logo file -->
       <div class="store-logo">
-        <img src="images/logos/tfm-logo.png" alt="The Furniture Market" style="height:36px; width:auto;">
+        <img src="images/logos/tfm-logo.png" alt="The Furniture Market" style="height:32px; width:auto;">
+        
       </div>
 
       <div class="brand-divider"></div>
@@ -3354,7 +3355,7 @@
           <span class="moon-sm"><svg width="16" height="16" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28" cy="28" r="26" fill="url(#moonGradSm)" opacity="0.9"/><path d="M38 12C33.5 16.5 31 23 31 28C31 33 33.5 39.5 38 44C34.5 46.5 30 48 26 48C14 48 4 38 4 26C4 14 14 4 26 4C30 4 34.5 5.5 38 8C37.5 9.2 37.5 10.8 38 12Z" fill="url(#shadowGradSm)" opacity="0.35"/><defs><radialGradient id="moonGradSm" cx="0.35" cy="0.35" r="0.65"><stop offset="0%" stop-color="#f0daa8"/><stop offset="60%" stop-color="#d4a84b"/><stop offset="100%" stop-color="#b8922f"/></radialGradient><radialGradient id="shadowGradSm" cx="0.7" cy="0.5" r="0.6"><stop offset="0%" stop-color="#0f1f33"/><stop offset="100%" stop-color="#0f1f33" stop-opacity="0"/></radialGradient></defs></svg></span>
           DreamFinder
         </div>
-        <div class="app-tagline">Personalized Sleep Consultation</div>
+        <div class="app-tagline" data-i18n="header.tagline">Personalized Sleep Consultation</div>
       </div>
     </div>
 
@@ -3364,9 +3365,9 @@
       </svg>
       <span id="locationText">Texas</span>
     </div>
-    <button id="headerStartOverBtn" class="js-start-over" style="display:none; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:var(--cream); font-family:inherit; font-size:0.75rem; font-weight:600; padding:0.4rem 0.9rem; border-radius:8px; cursor:pointer; touch-action:manipulation; letter-spacing:0.2px;">↺ Restart Quiz</button>
+    <button id="headerStartOverBtn" class="js-start-over" style="display:none; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:var(--cream); font-family:inherit; font-size:0.75rem; font-weight:600; padding:0.4rem 0.9rem; border-radius:8px; cursor:pointer; touch-action:manipulation; letter-spacing:0.2px;" data-i18n="header.restart">↺ Restart Quiz</button>
     <button id="savedPicksBtn" onclick="window.showSavedPicks()" ontouchend="event.preventDefault();window.showSavedPicks();" style="display:none; background:linear-gradient(135deg,#c9a84c,#a8893d); color:#0d1730; font-family:inherit; font-size:0.75rem; font-weight:700; padding:0.4rem 0.9rem; border-radius:8px; cursor:pointer; touch-action:manipulation; border:none; gap:0.4rem; align-items:center;">
-      ⭐ Picks <span id="savedPicksCount" style="background:#0d1730; color:#c9a84c; border-radius:50%; width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:700; margin-left:0.2rem;">0</span>
+      ⭐ <span data-i18n="header.picks">Picks</span> <span id="savedPicksCount" style="background:#0d1730; color:#c9a84c; border-radius:50%; width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:700; margin-left:0.2rem;">0</span>
     </button>
   </header>
 
@@ -3395,17 +3396,22 @@
   </div>
 
   <!-- SCREEN: Welcome / Landing -->
-  <main class="main screen active" id="welcomeScreen">
+  <main class="main screen active" id="welcomeScreen" style="position:relative;">
+    <!-- Language Toggle -->
+    <div id="langToggle" style="position:absolute; top:1rem; right:1rem; z-index:50; display:flex; background:rgba(13,23,48,0.85); border-radius:10px; overflow:hidden; border:1px solid rgba(201,168,76,0.35); box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+      <button id="langBtnEn" onclick="switchLanguage('en')" ontouchend="event.preventDefault();switchLanguage('en');" style="padding:0.35rem 0.7rem; font-family:inherit; font-size:0.75rem; font-weight:700; border:none; cursor:pointer; touch-action:manipulation; background:#c9a84c; color:#0d1730; letter-spacing:0.5px;">EN</button>
+      <button id="langBtnEs" onclick="switchLanguage('es')" ontouchend="event.preventDefault();switchLanguage('es');" style="padding:0.35rem 0.7rem; font-family:inherit; font-size:0.75rem; font-weight:700; border:none; cursor:pointer; touch-action:manipulation; background:transparent; color:rgba(255,255,255,0.5); letter-spacing:0.5px;">ES</button>
+    </div>
     <div class="welcome">
       <!-- Large Store Logo -->
       <div class="hero-store-logo">
         <img src="images/logos/tfm-logo.png" alt="The Furniture Market" style="max-width:320px; width:80%; height:auto; margin-bottom:0.5rem;">
-        <p class="trust-signal">Stylish Furniture, Local Touch</p>
+        <p class="trust-signal" data-store="trust-signal">Stylish Furniture, Local Touch</p>
         <div class="made-badge">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/>
           </svg>
-          Made in Texas
+          <span data-store="made-badge">Made in Texas</span>
         </div>
       </div>
 
@@ -3447,23 +3453,23 @@
         </svg>
       </div>
 
-      <h1>Sleep Better <span class="gold">Tonight.</span></h1>
+      <h1><span data-i18n="welcome.hero">Sleep Better</span> <span class="gold" data-i18n="welcome.hero_accent">Tonight.</span></h1>
 
-      <p class="subtitle">
+      <p class="subtitle" data-i18n="welcome.subtitle">
         Tell us how you sleep — we'll find your perfect match.
       </p>
       
-      <div class="reward-hint">Your discount: <span class="discount-mystery"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span> <span style="opacity:0.5; font-weight:400; font-size:0.85rem; margin-left:0.3rem;">revealed after quiz</span></div>
+      <div class="reward-hint"><span data-i18n="welcome.reward_hint">Your discount:</span> <span class="discount-mystery"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span> <span style="opacity:0.5; font-weight:400; font-size:0.85rem; margin-left:0.3rem;" data-i18n="welcome.reward_revealed">revealed after quiz</span></div>
 
       <button class="cta-btn" id="startBtn" onclick="startQuiz()" ontouchend="event.preventDefault();startQuiz();" style="position:relative; z-index:10; touch-action:manipulation; -webkit-touch-callout:none; pointer-events:auto; cursor:pointer;">
-        <span class="cta-main">Find My Perfect Mattress</span>
-        <span class="cta-time">Quick quiz. Perfect match. Plus your discount.</span>
+        <span class="cta-main" data-i18n="welcome.cta_main">Find My Perfect Mattress</span>
+        <span class="cta-time" data-i18n="welcome.cta_sub">Quick quiz. Perfect match. Plus your discount.</span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
         </svg>
       </button>
 
-      <p class="social-proof" data-store="social-proof">Recommended by your Furniture Market sleep team</p>
+      <p class="social-proof" data-store="social-proof" data-i18n="welcome.social_proof">Recommended by your Furniture Market sleep team</p>
 
 
 
@@ -3485,6 +3491,7 @@
           <!-- Additional brands: add more brand-tag divs here when TFM provides their brand list -->
         </div>
       </div>
+      </div>
       <div style="width:100%; text-align:center; padding-top:0.5rem; font-size:0.45rem; color:rgba(248,246,241,0.25); line-height:1.5;">
         DreamFinder is a recommendation tool, not medical advice. Match scores are guidance only. Purchases subject to store policies.
         <a href="#" onclick="event.preventDefault();document.getElementById('privacyOverlay').classList.add('visible');" style="color:rgba(212,168,75,0.4); text-decoration:underline; pointer-events: auto;">Privacy & Terms</a>
@@ -3502,13 +3509,13 @@
   <!-- SCREEN: Review Answers (before profile reveal) -->
   <div class="screen" id="reviewScreen">
     <div class="question-container" style="max-width:620px; margin:0 auto; padding:1.5rem 1rem 2rem;">
-      <div class="question-category" style="margin-bottom:0.4rem;">Almost There</div>
-      <div class="question-text" style="font-size:1.4rem; margin-bottom:0.4rem;">Quick review</div>
-      <div class="question-help" style="margin-bottom:1.25rem;">Make sure everything looks right, then we'll build your match.</div>
+      <div class="question-category" style="margin-bottom:0.4rem;" data-i18n="review.category">Almost There</div>
+      <div class="question-text" style="font-size:1.4rem; margin-bottom:0.4rem;" data-i18n="review.title">Quick review</div>
+      <div class="question-help" style="margin-bottom:1.25rem;" data-i18n="review.help">Make sure everything looks right, then we'll build your match.</div>
       <div id="reviewList"></div>
       <div class="question-nav" style="margin-top:1.5rem;">
-        <button class="nav-btn back" onclick="prevQuestion()" ontouchend="event.preventDefault();prevQuestion();">← Back</button>
-        <button class="nav-btn next" onclick="window.showProfileScreen()" ontouchend="event.preventDefault();window.showProfileScreen();">Looks Good →</button>
+        <button class="nav-btn back" onclick="prevQuestion()" ontouchend="event.preventDefault();prevQuestion();" data-i18n="nav.back">← Back</button>
+        <button class="nav-btn next" onclick="window.showProfileScreen()" ontouchend="event.preventDefault();window.showProfileScreen();" data-i18n="review.looks_good">Looks Good →</button>
       </div>
     </div>
   </div>
@@ -3529,7 +3536,7 @@
       <div class="profile-reveal-badge">
         <span class="profile-badge-text">
           <span class="profile-checkmark"></span>
-          Your Sleep DNA, Decoded
+          <span data-i18n="profile.badge">Your Sleep DNA, Decoded</span>
         </span>
       </div>
 
@@ -3550,7 +3557,7 @@
 
       <!-- BIG ONE-LINER — salesperson hero statement -->
       <div class="profile-statement-wrap">
-        <div class="profile-statement-eyebrow">Your Perfect Match</div>
+        <div class="profile-statement-eyebrow" data-i18n="profile.perfect_match">Your Perfect Match</div>
         <div class="profile-statement" id="profileOneliner"></div>
       </div>
 
@@ -3571,7 +3578,7 @@
         </button>
         <a href="#" class="profile-back-edit" id="profileBackEdit"
           onclick="event.preventDefault();window.showScreen('reviewScreen');window.renderReview();"
-          ontouchend="event.preventDefault();window.showScreen('reviewScreen');window.renderReview();">← Edit my answers</a>
+          ontouchend="event.preventDefault();window.showScreen('reviewScreen');window.renderReview();" data-i18n="profile.edit_answers">← Edit my answers</a>
       </div>
 
     </div>
@@ -3585,13 +3592,13 @@
 
         <!-- Phase 1: intro label -->
         <div id="revealIntro" style="opacity:0; text-align:center;">
-          <div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:3px; color:var(--gold); font-weight:600; margin-bottom:0.6rem;">Your Exclusive Discount</div>
-          <div style="font-size:1rem; color:var(--cream-dim); font-weight:400;">Calculating your savings...</div>
+          <div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:3px; color:var(--gold); font-weight:600; margin-bottom:0.6rem;" data-i18n="discount.title">Your Exclusive Discount</div>
+          <div style="font-size:1rem; color:var(--cream-dim); font-weight:400;" data-i18n="discount.calculating">Calculating your savings...</div>
         </div>
 
         <!-- Phase 2: DREAM code slot machine -->
         <div id="revealSlotWrap" style="display:none; text-align:center;">
-          <div style="font-size:0.55rem; text-transform:uppercase; letter-spacing:3px; color:var(--gold); font-weight:600; margin-bottom:1rem;">Your Discount Code</div>
+          <div style="font-size:0.55rem; text-transform:uppercase; letter-spacing:3px; color:var(--gold); font-weight:600; margin-bottom:1rem;" data-i18n="discount.code_label">Your Discount Code</div>
           <div id="revealSlotRow" style="display:flex; align-items:center; justify-content:center; gap:6px; margin-bottom:1.5rem;">
             <!-- D R E A M letters -->
             <div class="slot-letter" id="sl0">D</div>
@@ -3607,12 +3614,12 @@
           </div>
           <!-- Percentage counter -->
           <div id="revealPctWrap" style="opacity:0; transition:opacity 0.4s ease;">
-            <div style="font-size:0.55rem; text-transform:uppercase; letter-spacing:3px; color:var(--gold); font-weight:600; margin-bottom:0.5rem;">Discount Unlocked</div>
+            <div style="font-size:0.55rem; text-transform:uppercase; letter-spacing:3px; color:var(--gold); font-weight:600; margin-bottom:0.5rem;" data-i18n="discount.unlocked">Discount Unlocked</div>
             <div style="display:flex; align-items:baseline; justify-content:center; gap:4px;">
               <span id="revealCounter" style="font-size:5rem; font-weight:900; color:var(--gold); line-height:1; text-shadow:0 0 40px rgba(212,168,75,0.6);">0</span>
-              <span style="font-size:2.5rem; font-weight:800; color:var(--cream); line-height:1;">% OFF</span>
+              <span style="font-size:2.5rem; font-weight:800; color:var(--cream); line-height:1;" data-i18n="discount.off">% OFF</span>
             </div>
-            <div id="revealSubtitle" style="font-size:0.85rem; color:var(--cream-dim); margin-top:0.6rem; opacity:0; transition:opacity 0.4s ease;">Show this screen to your sleep specialist</div>
+            <div id="revealSubtitle" style="font-size:0.85rem; color:var(--cream-dim); margin-top:0.6rem; opacity:0; transition:opacity 0.4s ease;" data-i18n="discount.show_specialist">Show this screen to your sleep specialist</div>
           </div>
         </div>
 
@@ -3622,11 +3629,11 @@
     </div>
 
     <div class="results-header">
-      <h2>Your perfect matches are ready</h2>
+      <h2 data-i18n="results.header">Your perfect matches are ready</h2>
       <!-- Salesperson handoff cue -->
       <div style="display:flex; align-items:center; gap:0.5rem; background:linear-gradient(135deg,rgba(212,168,75,0.1),rgba(212,168,75,0.04)); border:1px solid rgba(212,168,75,0.35); border-radius:8px; padding:0.45rem 0.75rem; margin-top:0.5rem;">
         <span style="font-size:1rem;">🛏️</span>
-        <span style="font-size:0.72rem; color:var(--cream-dim); line-height:1.3;"><span style="color:var(--gold); font-weight:700;">Ask your sleep specialist</span> to walk you through each option below.</span>
+        <span style="font-size:0.72rem; color:var(--cream-dim); line-height:1.3;" data-i18n="results.specialist_cue" data-i18n-html="true"><span style="color:var(--gold); font-weight:700;">Ask your sleep specialist</span> to walk you through each option below.</span>
       </div>
     </div>
     
@@ -3634,16 +3641,16 @@
     <div class="sleep-profile" id="sleepProfile"></div>
     
     <div class="tier-tabs" id="tierTabs">
-      <button class="tier-tab gold active" onclick="showTier('gold')">⭐ Gold</button>
-      <button class="tier-tab silver" onclick="showTier('silver')">🥈 Silver</button>
-      <button class="tier-tab bronze" onclick="showTier('bronze')">🥉 Bronze</button>
+      <button class="tier-tab gold active" onclick="showTier('gold')">⭐ <span data-i18n="results.tier_gold">Gold</span></button>
+      <button class="tier-tab silver" onclick="showTier('silver')">🥈 <span data-i18n="results.tier_silver">Silver</span></button>
+      <button class="tier-tab bronze" onclick="showTier('bronze')">🥉 <span data-i18n="results.tier_bronze">Bronze</span></button>
     </div>
-    <div id="tierExplainer" style="text-align:center; font-size:0.7rem; color:var(--cream-dim); padding:0.4rem 1rem 0.6rem; line-height:1.4;">
+    <div id="tierExplainer" style="text-align:center; font-size:0.7rem; color:var(--cream-dim); padding:0.4rem 1rem 0.6rem; line-height:1.4;" data-i18n="results.tier_explainer" data-i18n-html="true">
       <span style="color:#d4a84b; font-weight:700;">Gold</span> · premium materials &nbsp;·&nbsp;
       <span style="color:#c0c7ce; font-weight:700;">Silver</span> · mid-range value &nbsp;·&nbsp;
       <span style="color:#cd7f32; font-weight:700;">Bronze</span> · entry-level
     </div>
-    <div style="text-align:center; font-size:0.68rem; color:var(--cream-dim); margin:-0.25rem 0 0.4rem; opacity:0.85;">Tap any mattress card to explore details &amp; features</div>
+    <div style="text-align:center; font-size:0.68rem; color:var(--cream-dim); margin:-0.25rem 0 0.4rem; opacity:0.85;" data-i18n="results.tap_hint">Tap any mattress card to explore details &amp; features</div>
     
     <!-- Carousel container -->
     <div class="carousel-container">
@@ -3658,8 +3665,8 @@
     <!-- Bottom section with CTA -->
     <div class="bottom-section">
       <div style="text-align:center; margin-top:0.4rem; display:flex; flex-direction:column; gap:0.5rem; align-items:center;">
-        <button class="cta-btn" onclick="showAccessories()" style="background:linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 100%); color:var(--navy); box-shadow:0 4px 0 #9a7a2e, 0 6px 20px rgba(212,168,75,0.25); font-size:0.85rem; padding:0.7rem 1.75rem; border:2px solid var(--gold-pale); font-weight:700; border-radius:14px; transition:all 0.15s ease;">Complete Your Setup — Pillows, Protectors & More →</button>
-        <div style="font-size:0.68rem; color:var(--cream-dim);">Your <span id="bannerPct" style="color:var(--gold); font-weight:700;"></span> discount applies to everything</div>
+        <button class="cta-btn" onclick="showAccessories()" style="background:linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 100%); color:var(--navy); box-shadow:0 4px 0 #9a7a2e, 0 6px 20px rgba(212,168,75,0.25); font-size:0.85rem; padding:0.7rem 1.75rem; border:2px solid var(--gold-pale); font-weight:700; border-radius:14px; transition:all 0.15s ease;" data-i18n="results.complete_setup">Complete Your Setup — Pillows, Protectors & More →</button>
+        <div style="font-size:0.68rem; color:var(--cream-dim);" data-i18n="results.discount_applies" data-i18n-html="true">Your <span id="bannerPct" style="color:var(--gold); font-weight:700;"></span> discount applies to everything</div>
       </div>
     </div>
   </div>
@@ -3669,7 +3676,7 @@
   <div class="mattress-drawer" id="mattressDrawer">
     <div class="drawer-handle-bar" onclick="window.closeMattressDrawer()"></div>
     <!-- Full-width mattress hero image -->
-    <div id="drawerHeroImg" style="width:100%; height:200px; background:#1a2744; overflow:hidden; flex-shrink:0; border-radius:0 0 12px 12px;"></div>
+    <div id="drawerHeroImg" style="width:100%; height:200px; background:var(--navy-light); overflow:hidden; flex-shrink:0;"></div>
     <div class="drawer-scroll" id="drawerScroll">
       <div class="drawer-mattress-header">
         <div class="drawer-mattress-img" id="drawerImg"></div>
@@ -3680,9 +3687,9 @@
         </div>
         <div class="drawer-match-badge" id="drawerMatch"></div>
       </div>
-      <div class="drawer-section-label">Why it matches you</div>
+      <div class="drawer-section-label" data-i18n="drawer.why_matches">Why it matches you</div>
       <div class="drawer-feats" id="drawerFeats"></div>
-      <div class="drawer-section-label">About this mattress</div>
+      <div class="drawer-section-label" data-i18n="drawer.about">About this mattress</div>
       <div class="drawer-reason-box" id="drawerReason"></div>
       <div class="drawer-firmness-row">
         <span class="drawer-firm-label" id="drawerFirmLabel">Firmness</span>
@@ -3691,16 +3698,16 @@
       </div>
       <div class="drawer-tags-row" id="drawerTags"></div>
       <div class="drawer-cta-row">
-        <button id="drawerInterestedBtn" class="drawer-btn drawer-btn-primary" onclick="window.saveDrawerPick()" ontouchend="event.preventDefault();window.saveDrawerPick();" style="touch-action:manipulation;">⭐ I'm Interested In This One</button>
+        <button id="drawerInterestedBtn" class="drawer-btn drawer-btn-primary" onclick="window.saveDrawerPick()" ontouchend="event.preventDefault();window.saveDrawerPick();" style="touch-action:manipulation;" data-i18n="drawer.interested">⭐ I'm Interested In This One</button>
       </div>
       <!-- Mattress navigation -->
       <div style="display:flex; align-items:center; justify-content:space-between; padding:0.75rem 1rem 0.5rem; border-top:1px solid rgba(255,255,255,0.08); margin-top:0.5rem;">
-        <button id="drawerPrevBtn" onclick="window.drawerNav(-1)" ontouchend="event.preventDefault();window.drawerNav(-1);" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:var(--cream); border-radius:10px; padding:0.5rem 1rem; font-size:0.78rem; cursor:pointer; font-family:inherit; touch-action:manipulation;">← Prev</button>
+        <button id="drawerPrevBtn" onclick="window.drawerNav(-1)" ontouchend="event.preventDefault();window.drawerNav(-1);" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:var(--cream); border-radius:10px; padding:0.5rem 1rem; font-size:0.78rem; cursor:pointer; font-family:inherit; touch-action:manipulation;" data-i18n="drawer.prev">← Prev</button>
         <span id="drawerNavLabel" style="font-size:0.72rem; color:var(--cream-dim);"></span>
-        <button id="drawerNextBtn" onclick="window.drawerNav(1)" ontouchend="event.preventDefault();window.drawerNav(1);" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:var(--cream); border-radius:10px; padding:0.5rem 1rem; font-size:0.78rem; cursor:pointer; font-family:inherit; touch-action:manipulation;">Next →</button>
+        <button id="drawerNextBtn" onclick="window.drawerNav(1)" ontouchend="event.preventDefault();window.drawerNav(1);" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:var(--cream); border-radius:10px; padding:0.5rem 1rem; font-size:0.78rem; cursor:pointer; font-family:inherit; touch-action:manipulation;" data-i18n="drawer.next">Next →</button>
       </div>
       <div style="text-align:center; padding-bottom:1rem;">
-        <button onclick="window.closeMattressDrawer()" style="background:none; border:none; color:var(--gold); font-size:0.72rem; cursor:pointer; font-family:inherit; text-decoration:underline;">← Back to all matches</button>
+        <button onclick="window.closeMattressDrawer()" style="background:none; border:none; color:var(--gold); font-size:0.72rem; cursor:pointer; font-family:inherit; text-decoration:underline;" data-i18n="results.back_to_results">← Back to all matches</button>
       </div>
     </div>
   </div>
@@ -3708,16 +3715,16 @@
   <!-- SCREEN: Saved Picks (Salesperson View) -->
   <div class="screen" id="savedPicksScreen" style="flex-direction:column; height:calc(100vh - var(--header-height) - var(--accent-bar-height)); overflow-y:auto; padding:1.25rem;">
     <div style="text-align:center; margin-bottom:1rem;">
-      <div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; color:var(--gold); font-weight:600; margin-bottom:0.3rem;">Salesperson Summary</div>
-      <h3 style="font-size:1.1rem; font-weight:700; color:var(--cream); margin-bottom:0.2rem;">Customer's Interested Picks</h3>
-      <p style="font-size:0.75rem; color:var(--cream-dim);">Mattresses the customer marked as interested</p>
+      <div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; color:var(--gold); font-weight:600; margin-bottom:0.3rem;" data-i18n="handoff.summary_label">Salesperson Summary</div>
+      <h3 style="font-size:1.1rem; font-weight:700; color:var(--cream); margin-bottom:0.2rem;" data-i18n="handoff.title">Customer's Interested Picks</h3>
+      <p style="font-size:0.75rem; color:var(--cream-dim);" data-i18n="handoff.subtitle">Mattresses the customer marked as interested</p>
     </div>
     <!-- Customer context card (built in showSavedPicks) -->
     <div id="customerContextCard" style="margin-bottom:1rem;"></div>
     <div id="savedPicksList" style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:1.5rem;"></div>
     <div style="text-align:center; display:flex; flex-direction:column; gap:0.6rem; align-items:center;">
-      <button onclick="showScreen('resultsScreen')" ontouchend="event.preventDefault();showScreen('resultsScreen');" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:var(--cream); font-family:inherit; font-size:0.82rem; font-weight:600; padding:0.6rem 1.5rem; border-radius:10px; cursor:pointer; touch-action:manipulation;">← Back to Results</button>
-      <button onclick="showEmailCapture()" ontouchend="event.preventDefault();showEmailCapture();" style="background:linear-gradient(180deg,var(--gold-light),var(--gold)); color:var(--navy); font-family:inherit; font-size:0.82rem; font-weight:700; padding:0.6rem 1.5rem; border-radius:10px; cursor:pointer; touch-action:manipulation; border:2px solid var(--gold-pale);">Send Results to Customer →</button>
+      <button onclick="showScreen('resultsScreen')" ontouchend="event.preventDefault();showScreen('resultsScreen');" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:var(--cream); font-family:inherit; font-size:0.82rem; font-weight:600; padding:0.6rem 1.5rem; border-radius:10px; cursor:pointer; touch-action:manipulation;" data-i18n="handoff.back_to_results">← Back to Results</button>
+      <button onclick="showEmailCapture()" ontouchend="event.preventDefault();showEmailCapture();" style="background:linear-gradient(180deg,var(--gold-light),var(--gold)); color:var(--navy); font-family:inherit; font-size:0.82rem; font-weight:700; padding:0.6rem 1.5rem; border-radius:10px; cursor:pointer; touch-action:manipulation; border:2px solid var(--gold-pale);" data-i18n="handoff.send_results">Send Results to Customer →</button>
     </div>
   </div>
 
@@ -3728,8 +3735,8 @@
         <div class="email-badge-icon">✉</div>
         <div class="email-badge-ring"></div>
       </div>
-      <h3 class="email-title">Don't forget your results</h3>
-      <p class="email-subtitle">Get your sleep profile, mattress matches, and discount sent straight to you — so you can review at home or share with your partner.</p>
+      <h3 class="email-title" data-i18n="email.title">Don't forget your results</h3>
+      <p class="email-subtitle" data-i18n="email.subtitle">Get your sleep profile, mattress matches, and discount sent straight to you — so you can review at home or share with your partner.</p>
       
       <div class="email-preview" id="emailPreview">
         <!-- Dynamically shows a summary of what they'll receive -->
@@ -3737,23 +3744,23 @@
 
       <div class="email-form">
         <div class="email-form-group">
-          <label class="email-label">Your Name</label>
-          <input type="text" id="emailNameInput" class="email-input" placeholder="First name" autocomplete="given-name" />
+          <label class="email-label" data-i18n="email.name_label">Your Name</label>
+          <input type="text" id="emailNameInput" class="email-input" placeholder="First name" data-i18n-placeholder="email.name_placeholder" autocomplete="given-name" />
         </div>
 
         <div class="email-form-group">
-          <label class="email-label">Email Address <span style="color:var(--gold);">*</span></label>
-          <input type="email" id="emailInput" class="email-input" placeholder="your@email.com" autocomplete="email" />
+          <label class="email-label" data-i18n="email.email_label" data-i18n-html="true">Email Address <span style="color:var(--gold);">*</span></label>
+          <input type="email" id="emailInput" class="email-input" placeholder="your@email.com" data-i18n-placeholder="email.email_placeholder" autocomplete="email" />
           <div class="email-error" id="emailError"></div>
         </div>
 
         <div class="email-form-group">
-          <label class="email-label">Phone <span style="font-weight:400; color:var(--cream-dim); font-size:0.6rem;">(optional)</span></label>
+          <label class="email-label" data-i18n="email.phone_label" data-i18n-html="true">Phone <span style="font-weight:400; color:var(--cream-dim); font-size:0.6rem;">(optional)</span></label>
           <input type="tel" id="emailPhoneInput" class="email-input" placeholder="(555) 555-5555" autocomplete="tel" />
         </div>
       </div>
 
-      <button class="email-send-btn" id="emailSendBtn" onclick="sendResults()">
+      <button class="email-send-btn" id="emailSendBtn" onclick="sendResults()" data-i18n="email.send_btn">
         Send My Results
       </button>
       
@@ -3761,22 +3768,22 @@
         <div class="email-sent-icon">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="#6ecf9a" opacity="0.15"/><circle cx="20" cy="20" r="14" stroke="#6ecf9a" stroke-width="2" fill="none"/><path d="M13 20l4 4 10-10" stroke="#6ecf9a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <div class="email-sent-text">You're all set!</div>
-        <div class="email-sent-subtext">Check your inbox for your personalized results.</div>
+        <div class="email-sent-text" data-i18n="email.sent_title">You're all set!</div>
+        <div class="email-sent-subtext" data-i18n="email.sent_subtitle">Check your inbox for your personalized results.</div>
       </div>
 
-      <div class="email-privacy"><span data-store="email-privacy">We'll send your results and may occasionally follow up with sleep tips and offers from The Furniture Market.</span> Your info is never sold to third parties. Unsubscribe anytime. <a href="#" onclick="event.preventDefault();document.getElementById('privacyOverlay').classList.add('visible');" style="color:var(--gold); text-decoration:underline; font-weight:500;">Privacy & Terms</a></div>
+      <div class="email-privacy"><span data-store="email-privacy">We'll send your results and may occasionally follow up with sleep tips and offers from Bel Furniture.</span> Your info is never sold to third parties. Unsubscribe anytime. <a href="#" onclick="event.preventDefault();document.getElementById('privacyOverlay').classList.add('visible');" style="color:var(--gold); text-decoration:underline; font-weight:500;">Privacy & Terms</a></div>
 
       <div id="dreamCodeBox" style="width:100%; margin:1rem 0 0.5rem; border:2px dashed rgba(212,168,75,0.5); border-radius:14px; padding:1rem 1.25rem; text-align:center; background:rgba(212,168,75,0.05);">
-        <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:2px; color:var(--gold); font-weight:600; margin-bottom:0.4rem;">Your Discount Code</div>
+        <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:2px; color:var(--gold); font-weight:600; margin-bottom:0.4rem;" data-i18n="email.discount_label">Your Discount Code</div>
         <div id="dreamCodeValue" style="font-size:1.8rem; font-weight:800; letter-spacing:0.12em; color:var(--cream); font-family:monospace;"></div>
-        <div style="font-size:0.62rem; color:var(--cream-dim); margin-top:0.35rem;">Show this code to your sleep specialist · <span style="color:var(--gold); font-weight:600;" id="dreamCodePct"></span> OFF</div>
+        <div style="font-size:0.62rem; color:var(--cream-dim); margin-top:0.35rem;" data-i18n="email.discount_hint" data-i18n-html="true">Show this code to your sleep specialist · <span style="color:var(--gold); font-weight:600;" id="dreamCodePct"></span> OFF</div>
       </div>
       
 
       
       <div class="email-actions">
-        <button class="email-skip-btn js-start-over" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:var(--cream); font-family:inherit; font-size:0.8rem; font-weight:600; padding:0.6rem 1.5rem; border-radius:10px; cursor:pointer; touch-action:manipulation;">↺ Start New Customer</button>
+        <button class="email-skip-btn js-start-over" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:var(--cream); font-family:inherit; font-size:0.8rem; font-weight:600; padding:0.6rem 1.5rem; border-radius:10px; cursor:pointer; touch-action:manipulation;" data-i18n="email.start_new">↺ Start New Customer</button>
       </div>
     </div>
   </div>
@@ -3784,9 +3791,9 @@
   <!-- SCREEN: Accessories Upsell -->
   <div class="screen" id="accessoriesScreen" style="flex-direction:column; height:calc(100vh - var(--header-height) - var(--accent-bar-height)); overflow-y:auto; padding:1rem;">
     <div id="accHeader" style="text-align:center; margin-bottom:0.75rem; opacity:0; transform:translateY(10px); transition:all 0.5s ease-out;">
-      <div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; color:var(--gold); font-weight:600; margin-bottom:0.25rem;">Sleep Profile Analysis</div>
-      <h3 style="font-size:1.1rem; font-weight:700; color:var(--cream); margin-bottom:0.2rem;">Everything else you need for better sleep</h3>
-      <p style="font-size:0.78rem; color:var(--cream-dim); line-height:1.3;" id="accessoriesSubhead">Based on your sleep profile, our algorithm identified these accessories to optimize your sleep.</p>
+      <div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; color:var(--gold); font-weight:600; margin-bottom:0.25rem;" data-i18n="accessories.analysis_label">Sleep Profile Analysis</div>
+      <h3 style="font-size:1.1rem; font-weight:700; color:var(--cream); margin-bottom:0.2rem;" data-i18n="accessories.title">Everything else you need for better sleep</h3>
+      <p style="font-size:0.78rem; color:var(--cream-dim); line-height:1.3;" id="accessoriesSubhead" data-i18n="accessories.subtitle">Based on your sleep profile, our algorithm identified these accessories to optimize your sleep.</p>
       <div id="accDiscountBanner" style="display:inline-flex; align-items:center; gap:0.5rem; margin-top:0.6rem; background:linear-gradient(135deg,rgba(212,168,75,0.15),rgba(212,168,75,0.07)); border:1px solid rgba(212,168,75,0.4); border-radius:50px; padding:0.35rem 1rem;">
         <span style="font-size:0.9rem;">🏷️</span>
         <span id="accDiscountText" style="font-size:0.75rem; font-weight:600; color:var(--gold);">Your 5% discount applies to everything on this page</span>
@@ -3796,7 +3803,7 @@
     <div id="accAnalyzing" style="text-align:center; margin:1.5rem 0; opacity:0; transition:opacity 0.3s ease;">
       <div style="display:inline-flex; align-items:center; gap:0.6rem; background:var(--navy-mid); border:1px solid rgba(212,168,75,0.15); border-radius:50px; padding:0.5rem 1.25rem;">
         <div id="accSpinner" style="width:16px; height:16px; border:2px solid rgba(212,168,75,0.2); border-top-color:var(--gold); border-radius:50%; animation:accSpin 0.8s linear infinite;"></div>
-        <span id="accStatus" style="font-size:0.75rem; color:var(--cream-dim); font-weight:500;">Analyzing your sleep profile...</span>
+        <span id="accStatus" style="font-size:0.75rem; color:var(--cream-dim); font-weight:500;" data-i18n="accessories.analyzing">Analyzing your sleep profile...</span>
       </div>
     </div>
     <style>
@@ -3810,11 +3817,11 @@
         <span style="font-size:1.1rem;">🛒</span>
         <span id="accCartCount" style="font-size:0.85rem; color:var(--cream); font-weight:600;">0 items added to your list</span>
       </div>
-      <div style="font-size:0.7rem; color:var(--gold); font-style:italic;">Tap a card to add or remove</div>
+      <div style="font-size:0.7rem; color:var(--gold); font-style:italic;" data-i18n="accessories.tap_hint">Tap a card to add or remove</div>
     </div>
     <div id="accFooter" style="text-align:center; margin-top:1.25rem; padding-bottom:1rem; opacity:0; transform:translateY(10px); transition:all 0.5s ease-out; display:flex; flex-direction:column; gap:0.5rem; align-items:center;">
-      <button class="cta-btn" onclick="showEmailCapture()" style="background:linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 100%); color:var(--navy); border:2px solid var(--gold-pale); padding:0.75rem 2rem; border-radius:14px; font-family:inherit; font-size:0.95rem; font-weight:700; cursor:pointer; box-shadow:0 4px 0 #9a7a2e, 0 6px 20px rgba(212,168,75,0.25);">Send Me My Results</button>
-      <button class="cta-btn js-start-over" style="background:transparent; color:var(--cream-dim); font-size:0.72rem; padding:0.4rem 1rem; border:1px solid rgba(255,255,255,0.1); font-weight:500; border-radius:8px; cursor:pointer; font-family:inherit; touch-action:manipulation;">Start Over</button>
+      <button class="cta-btn" onclick="showEmailCapture()" style="background:linear-gradient(180deg, var(--gold-light) 0%, var(--gold) 100%); color:var(--navy); border:2px solid var(--gold-pale); padding:0.75rem 2rem; border-radius:14px; font-family:inherit; font-size:0.95rem; font-weight:700; cursor:pointer; box-shadow:0 4px 0 #9a7a2e, 0 6px 20px rgba(212,168,75,0.25);" data-i18n="accessories.send_results">Send Me My Results</button>
+      <button class="cta-btn js-start-over" style="background:transparent; color:var(--cream-dim); font-size:0.72rem; padding:0.4rem 1rem; border:1px solid rgba(255,255,255,0.1); font-weight:500; border-radius:8px; cursor:pointer; font-family:inherit; touch-action:manipulation;" data-i18n="accessories.start_over">Start Over</button>
     </div>
   </div>
 
@@ -3842,6 +3849,96 @@
       }
       const digits = String(Math.abs(hash) % 900 + 100); // always 3 digits (100–999)
       return 'DREAM' + digits;
+    }
+
+    // ===== i18n INFRASTRUCTURE =====
+    let currentLang = 'en';
+    let DICT = {};
+
+    // Lookup a dictionary key, with optional {placeholder} interpolation
+    function t(key, replacements) {
+      var str = DICT[key] || key;
+      if (replacements) {
+        Object.keys(replacements).forEach(function(k) {
+          str = str.replace(new RegExp('\\{' + k + '\\}', 'g'), replacements[k]);
+        });
+      }
+      return str;
+    }
+
+    // Lookup a bilingual inline object: {en: "...", es: "..."}
+    function L(obj) {
+      if (typeof obj === 'object' && obj !== null && obj[currentLang]) return obj[currentLang];
+      if (typeof obj === 'string') return obj;
+      return (obj && obj.en) || '';
+    }
+
+    // Language-aware mattress field accessor
+    function mField(m, field) {
+      return currentLang === 'es' ? (m[field + '_es'] || m[field]) : m[field];
+    }
+
+    // Load a dictionary file
+    async function loadDictionary(lang) {
+      try {
+        var res = await fetch('./data/dict-' + lang + '.json');
+        DICT = await res.json();
+      } catch (e) {
+        console.warn('[DreamFinder] Could not load dictionary for ' + lang + ', falling back to en');
+        if (lang !== 'en') {
+          try {
+            var fallback = await fetch('./data/dict-en.json');
+            DICT = await fallback.json();
+          } catch (e2) {
+            console.error('[DreamFinder] Failed to load any dictionary:', e2);
+            DICT = {};
+          }
+        }
+      }
+    }
+
+    // Apply data-i18n attributes to all tagged elements
+    function applyTranslations() {
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        var val = t(key, { storeName: (STORE_CONFIG && STORE_CONFIG.storeName) || '', discount: STORE_DISCOUNT });
+        if (val !== key) {
+          if (el.getAttribute('data-i18n-html') === 'true') {
+            el.innerHTML = val;
+          } else {
+            el.textContent = val;
+          }
+        }
+      });
+      // Handle placeholder translations
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-placeholder');
+        var val = t(key);
+        if (val !== key) {
+          el.setAttribute('placeholder', val);
+        }
+      });
+    }
+
+    // Switch language: reload dictionary, update toggle UI, re-apply text
+    async function switchLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      await loadDictionary(lang);
+      applyTranslations();
+      // Update toggle button styles
+      var btnEn = document.getElementById('langBtnEn');
+      var btnEs = document.getElementById('langBtnEs');
+      if (btnEn) {
+        btnEn.style.background = lang === 'en' ? '#c9a84c' : 'transparent';
+        btnEn.style.color = lang === 'en' ? '#0d1730' : 'rgba(255,255,255,0.5)';
+      }
+      if (btnEs) {
+        btnEs.style.background = lang === 'es' ? '#c9a84c' : 'transparent';
+        btnEs.style.color = lang === 'es' ? '#0d1730' : 'rgba(255,255,255,0.5)';
+      }
+      // Re-apply store config text for current language
+      applyStoreConfig();
     }
 
     // ===== SVG ICON LIBRARY =====
@@ -3913,132 +4010,132 @@
     // ----- QUESTIONS -----
     const QUESTIONS = [
       {
-        id: 'trigger', category: 'Getting Started', question: "What brought you in today?",
-        helpText: "Helps your sleep specialist tailor the visit", type: 'single',
+        id: 'trigger', category: {en: 'Getting Started', es: 'Para Empezar'}, question: {en: "What brought you in today?", es: "\u00bfQu\u00e9 te trae hoy?"},
+        helpText: {en: "Helps your sleep specialist tailor the visit", es: "Ayuda a tu especialista de sue\u00f1o a personalizar la visita"}, type: 'single',
         options: [
-          { id: 'pain', label: 'Back or Body Pain', icon: 'spine', sublabel: 'Current mattress is hurting me', scores: {} },
-          { id: 'worn_out', label: 'Old Mattress', icon: 'sagging', sublabel: 'Time for an upgrade', scores: {} },
-          { id: 'moving', label: 'Moving or New Space', icon: 'family', sublabel: 'New home, new bed', scores: {} },
-          { id: 'upgrade', label: 'Just Upgrading', icon: 'cloud', sublabel: 'Ready for something better', scores: {} },
-          { id: 'browsing', label: 'Just Looking', icon: 'smile', sublabel: 'Exploring options', scores: {} }
+          { id: 'pain', label: {en: 'Back or Body Pain', es: 'Dolor de Espalda o Cuerpo'}, icon: 'spine', sublabel: {en: 'Current mattress is hurting me', es: 'Mi colch\u00f3n actual me lastima'}, scores: {} },
+          { id: 'worn_out', label: {en: 'Old Mattress', es: 'Colch\u00f3n Viejo'}, icon: 'sagging', sublabel: {en: 'Time for an upgrade', es: 'Es hora de un cambio'}, scores: {} },
+          { id: 'moving', label: {en: 'Moving or New Space', es: 'Mudanza o Espacio Nuevo'}, icon: 'family', sublabel: {en: 'New home, new bed', es: 'Casa nueva, cama nueva'}, scores: {} },
+          { id: 'upgrade', label: {en: 'Just Upgrading', es: 'Mejorando'}, icon: 'cloud', sublabel: {en: 'Ready for something better', es: 'Listo para algo mejor'}, scores: {} },
+          { id: 'browsing', label: {en: 'Just Looking', es: 'Solo Mirando'}, icon: 'smile', sublabel: {en: 'Exploring options', es: 'Explorando opciones'}, scores: {} }
         ]
       },
       {
-        id: 'mattress_size', category: 'Getting Started', question: "What size mattress are you looking for?",
-        helpText: "We'll make sure recommendations fit your space", type: 'single',
+        id: 'mattress_size', category: {en: 'Getting Started', es: 'Para Empezar'}, question: {en: "What size mattress are you looking for?", es: "\u00bfQu\u00e9 tama\u00f1o de colch\u00f3n buscas?"},
+        helpText: {en: "We'll make sure recommendations fit your space", es: "Nos aseguraremos de que las recomendaciones se ajusten a tu espacio"}, type: 'single',
         options: [
-          { id: 'twin', label: 'Twin', icon: 'solo', sublabel: 'Kids or tight spaces', scores: {} },
-          { id: 'twin_xl', label: 'Twin XL', icon: 'solo', sublabel: 'Extra length, single sleeper', scores: {} },
-          { id: 'full', label: 'Full', icon: 'solo', sublabel: 'Solo or cozy pair', scores: {} },
-          { id: 'queen', label: 'Queen', icon: 'partner', sublabel: 'Most popular size', scores: {} },
-          { id: 'king', label: 'King', icon: 'family', sublabel: 'Maximum space', scores: {} },
-          { id: 'cal_king', label: 'Cal King', icon: 'family', sublabel: 'Extra length', scores: {} }
+          { id: 'twin', label: {en: 'Twin', es: 'Twin'}, icon: 'solo', sublabel: {en: 'Kids or tight spaces', es: 'Ni\u00f1os o espacios peque\u00f1os'}, scores: {} },
+          { id: 'twin_xl', label: {en: 'Twin XL', es: 'Twin XL'}, icon: 'solo', sublabel: {en: 'Extra length, single sleeper', es: 'Largo extra, una persona'}, scores: {} },
+          { id: 'full', label: {en: 'Full', es: 'Full'}, icon: 'solo', sublabel: {en: 'Solo or cozy pair', es: 'Solo o pareja c\u00f3moda'}, scores: {} },
+          { id: 'queen', label: {en: 'Queen', es: 'Queen'}, icon: 'partner', sublabel: {en: 'Most popular size', es: 'El tama\u00f1o m\u00e1s popular'}, scores: {} },
+          { id: 'king', label: {en: 'King', es: 'King'}, icon: 'family', sublabel: {en: 'Maximum space', es: 'Espacio m\u00e1ximo'}, scores: {} },
+          { id: 'cal_king', label: {en: 'Cal King', es: 'Cal King'}, icon: 'family', sublabel: {en: 'Extra length', es: 'Largo extra'}, scores: {} }
         ]
       },
       {
-        id: 'sleep_position', category: 'About You', question: "How do you usually sleep?",
-        helpText: "Think about where you naturally end up", type: 'single',
+        id: 'sleep_position', category: {en: 'About You', es: 'Sobre Ti'}, question: {en: "How do you usually sleep?", es: "\u00bfC\u00f3mo duermes normalmente?"},
+        helpText: {en: "Think about where you naturally end up", es: "Piensa en c\u00f3mo terminas naturalmente"}, type: 'single',
         options: [
-          { id: 'side', label: 'Side Sleeper', icon: 'side', sublabel: 'Curled up', scores: { plush: 2, pressureRelief: 2, soft: 1 } },
-          { id: 'back', label: 'Back Sleeper', icon: 'back', sublabel: 'Flat on back', scores: { support: 2, medium: 2, zoned: 1 } },
-          { id: 'stomach', label: 'Stomach Sleeper', icon: 'stomach', sublabel: 'Face down', scores: { firm: 2, support: 1 } },
-          { id: 'combo', label: 'Combination', icon: 'combo', sublabel: 'Move around', scores: { medium: 2, responsive: 2 } },
-          { id: 'no_idea', label: 'Not Sure', icon: 'question', sublabel: 'I wake up in weird positions', scores: { medium: 2, responsive: 2 } }
+          { id: 'side', label: {en: 'Side Sleeper', es: 'De Lado'}, icon: 'side', sublabel: {en: 'Curled up', es: 'Acurrucado'}, scores: { plush: 2, pressureRelief: 2, soft: 1 } },
+          { id: 'back', label: {en: 'Back Sleeper', es: 'Boca Arriba'}, icon: 'back', sublabel: {en: 'Flat on back', es: 'Acostado de espalda'}, scores: { support: 2, medium: 2, zoned: 1 } },
+          { id: 'stomach', label: {en: 'Stomach Sleeper', es: 'Boca Abajo'}, icon: 'stomach', sublabel: {en: 'Face down', es: 'Boca abajo'}, scores: { firm: 2, support: 1 } },
+          { id: 'combo', label: {en: 'Combination', es: 'Combinaci\u00f3n'}, icon: 'combo', sublabel: {en: 'Move around', es: 'Me muevo mucho'}, scores: { medium: 2, responsive: 2 } },
+          { id: 'no_idea', label: {en: 'Not Sure', es: 'No Estoy Seguro'}, icon: 'question', sublabel: {en: 'I wake up in weird positions', es: 'Me despierto en posiciones raras'}, scores: { medium: 2, responsive: 2 } }
         ]
       },
       {
-        id: 'body_type', category: 'About You', question: "What weight range should we match for?",
-        helpText: "This helps us pick the right support level", type: 'single',
+        id: 'body_type', category: {en: 'About You', es: 'Sobre Ti'}, question: {en: "What weight range should we match for?", es: "\u00bfPara qu\u00e9 rango de peso debemos buscar?"},
+        helpText: {en: "This helps us pick the right support level", es: "Esto nos ayuda a elegir el nivel de soporte correcto"}, type: 'single',
         options: [
-          { id: 'petite', label: 'Under 130 lbs', icon: 'cloud', sublabel: 'Light support', scores: { plush: 2, soft: 1 } },
-          { id: 'average', label: '130 to 200 lbs', icon: 'weight', sublabel: 'Standard support', scores: { medium: 2 } },
-          { id: 'athletic', label: '200 to 230 lbs', icon: 'support', sublabel: 'Medium-firm support', scores: { support: 2, medium: 1, responsive: 1 } },
-          { id: 'plus', label: 'Over 230 lbs', icon: 'support', sublabel: 'Maximum support', scores: { firm: 2, support: 3, hybrid: 2, durability: 2 } },
-          { id: 'different', label: 'Different Weights', icon: 'partner', sublabel: 'Mixed support needs', scores: { medium: 2, support: 1, motionIsolation: 2 }, hideIf: { question: 'partner_sleep', answer: 'solo' } }
+          { id: 'petite', label: {en: 'Under 130 lbs', es: 'Menos de 130 lbs'}, icon: 'cloud', sublabel: {en: 'Light support', es: 'Soporte ligero'}, scores: { plush: 2, soft: 1 } },
+          { id: 'average', label: {en: '130 to 200 lbs', es: '130 a 200 lbs'}, icon: 'weight', sublabel: {en: 'Standard support', es: 'Soporte est\u00e1ndar'}, scores: { medium: 2 } },
+          { id: 'athletic', label: {en: '200 to 230 lbs', es: '200 a 230 lbs'}, icon: 'support', sublabel: {en: 'Medium-firm support', es: 'Soporte medio-firme'}, scores: { support: 2, medium: 1, responsive: 1 } },
+          { id: 'plus', label: {en: 'Over 230 lbs', es: 'M\u00e1s de 230 lbs'}, icon: 'support', sublabel: {en: 'Maximum support', es: 'Soporte m\u00e1ximo'}, scores: { firm: 2, support: 3, hybrid: 2, durability: 2 } },
+          { id: 'different', label: {en: 'Different Weights', es: 'Pesos Diferentes'}, icon: 'partner', sublabel: {en: 'Mixed support needs', es: 'Necesidades mixtas de soporte'}, scores: { medium: 2, support: 1, motionIsolation: 2 }, hideIf: { question: 'partner_sleep', answer: 'solo' } }
         ]
       },
       {
-        id: 'partner_sleep', category: "Who's With You", question: "Who's sharing the bed with you?",
-        helpText: "This shapes which features matter most", type: 'single',
+        id: 'partner_sleep', category: {en: "Who's With You", es: "Qui\u00e9n Est\u00e1 Contigo"}, question: {en: "Who's sharing the bed with you?", es: "\u00bfQui\u00e9n comparte la cama contigo?"},
+        helpText: {en: "This shapes which features matter most", es: "Esto determina qu\u00e9 caracter\u00edsticas importan m\u00e1s"}, type: 'single',
         options: [
-          { id: 'solo', label: 'Solo Sleeper', icon: 'solo', sublabel: 'Just me', scores: {} },
-          { id: 'partner', label: 'With a Partner', icon: 'partner', sublabel: 'Sharing the bed', scores: { motionIsolation: 2 } },
-          { id: 'family', label: 'Family Bed', icon: 'family', sublabel: 'Kids, pets, or both', scores: { durability: 2, motionIsolation: 1 } }
+          { id: 'solo', label: {en: 'Solo Sleeper', es: 'Duermo Solo'}, icon: 'solo', sublabel: {en: 'Just me', es: 'Solo yo'}, scores: {} },
+          { id: 'partner', label: {en: 'With a Partner', es: 'Con Pareja'}, icon: 'partner', sublabel: {en: 'Sharing the bed', es: 'Compartimos la cama'}, scores: { motionIsolation: 2 } },
+          { id: 'family', label: {en: 'Family Bed', es: 'Cama Familiar'}, icon: 'family', sublabel: {en: 'Kids, pets, or both', es: 'Ni\u00f1os, mascotas, o ambos'}, scores: { durability: 2, motionIsolation: 1 } }
         ]
       },
       {
-        id: 'partner_disturbance', category: "Who's With You", question: "Does your partner's movement wake you up?",
-        helpText: "Motion isolation is one of the biggest upgrades in a new mattress", type: 'single',
+        id: 'partner_disturbance', category: {en: "Who's With You", es: "Qui\u00e9n Est\u00e1 Contigo"}, question: {en: "Does your partner's movement wake you up?", es: "\u00bfEl movimiento de tu pareja te despierta?"},
+        helpText: {en: "Motion isolation is one of the biggest upgrades in a new mattress", es: "El aislamiento de movimiento es una de las mayores mejoras en un colch\u00f3n nuevo"}, type: 'single',
         skipIf: { question: 'partner_sleep', answer: 'solo' },
         options: [
-          { id: 'yes_often', label: 'Yes, Often', icon: 'motion', sublabel: 'Every movement wakes me', scores: { motionIsolation: 4, hybrid: 3, memory: 2 } },
-          { id: 'sometimes', label: 'Sometimes', icon: 'combo', sublabel: 'Bigger movements bother me', scores: { motionIsolation: 3, hybrid: 2 } },
-          { id: 'rarely', label: 'Rarely', icon: 'check', sublabel: 'Light sleeper but mostly fine', scores: { motionIsolation: 1 } },
-          { id: 'not_applicable', label: "Doesn't Apply", icon: 'solo', sublabel: 'I sleep alone', scores: {} }
+          { id: 'yes_often', label: {en: 'Yes, Often', es: 'S\u00ed, Seguido'}, icon: 'motion', sublabel: {en: 'Every movement wakes me', es: 'Cada movimiento me despierta'}, scores: { motionIsolation: 4, hybrid: 3, memory: 2 } },
+          { id: 'sometimes', label: {en: 'Sometimes', es: 'A Veces'}, icon: 'combo', sublabel: {en: 'Bigger movements bother me', es: 'Los movimientos grandes me molestan'}, scores: { motionIsolation: 3, hybrid: 2 } },
+          { id: 'rarely', label: {en: 'Rarely', es: 'Rara Vez'}, icon: 'check', sublabel: {en: 'Light sleeper but mostly fine', es: 'Sue\u00f1o ligero pero generalmente bien'}, scores: { motionIsolation: 1 } },
+          { id: 'not_applicable', label: {en: "Doesn't Apply", es: "No Aplica"}, icon: 'solo', sublabel: {en: 'I sleep alone', es: 'Duermo solo'}, scores: {} }
         ]
       },
       {
-        id: 'temperature', category: 'What You Like', question: "How do you sleep temperature-wise?",
-        helpText: "Temperature regulation is key to deep sleep", type: 'single',
+        id: 'temperature', category: {en: 'What You Like', es: 'Lo Que Te Gusta'}, question: {en: "How do you sleep temperature-wise?", es: "\u00bfC\u00f3mo duermes en cuanto a temperatura?"},
+        helpText: {en: "Temperature regulation is key to deep sleep", es: "La regulaci\u00f3n de temperatura es clave para un sue\u00f1o profundo"}, type: 'single',
         options: [
-          { id: 'hot', label: 'I Sleep Hot', icon: 'flame', sublabel: 'Night sweats, kick off covers', scores: { cooling: 3, hybrid: 2 } },
-          { id: 'comfortable', label: "I'm Comfortable", icon: 'smile', sublabel: 'No temperature issues', scores: {} },
-          { id: 'cold', label: 'I Sleep Cold', icon: 'snowflake', sublabel: 'Need blankets to warm up', scores: { memory: 1, plush: 1 } },
-          { id: 'opposite', label: "We're Opposite", icon: 'hotcold', sublabel: 'One hot, one cold', scores: { cooling: 2, hybrid: 1 }, hideIf: { question: 'partner_sleep', answer: 'solo' } }
+          { id: 'hot', label: {en: 'I Sleep Hot', es: 'Duermo con Calor'}, icon: 'flame', sublabel: {en: 'Night sweats, kick off covers', es: 'Sudores nocturnos, quito las cobijas'}, scores: { cooling: 3, hybrid: 2 } },
+          { id: 'comfortable', label: {en: "I'm Comfortable", es: "Estoy C\u00f3modo"}, icon: 'smile', sublabel: {en: 'No temperature issues', es: 'Sin problemas de temperatura'}, scores: {} },
+          { id: 'cold', label: {en: 'I Sleep Cold', es: 'Duermo con Fr\u00edo'}, icon: 'snowflake', sublabel: {en: 'Need blankets to warm up', es: 'Necesito cobijas para calentarme'}, scores: { memory: 1, plush: 1 } },
+          { id: 'opposite', label: {en: "We're Opposite", es: "Somos Opuestos"}, icon: 'hotcold', sublabel: {en: 'One hot, one cold', es: 'Uno con calor, otro con fr\u00edo'}, scores: { cooling: 2, hybrid: 1 }, hideIf: { question: 'partner_sleep', answer: 'solo' } }
         ]
       },
       {
-        id: 'firmness', category: 'What You Like', question: "What firmness level do you prefer?",
-        helpText: "Slide to your ideal comfort", type: 'slider',
+        id: 'firmness', category: {en: 'What You Like', es: 'Lo Que Te Gusta'}, question: {en: "What firmness level do you prefer?", es: "\u00bfQu\u00e9 nivel de firmeza prefieres?"},
+        helpText: {en: "Slide to your ideal comfort", es: "Desliza a tu comodidad ideal"}, type: 'slider',
         min: 1, max: 10, defaultValue: 5,
-        labels: ['Soft — Sink right in', 'Medium', 'Firm — Solid support']
+        labels: [{en: 'Soft \u2014 Sink right in', es: 'Suave \u2014 Hundirse'}, {en: 'Medium', es: 'Medio'}, {en: 'Firm \u2014 Solid support', es: 'Firme \u2014 Soporte s\u00f3lido'}]
       },
       {
-        id: 'current_mattress_age', category: "What You're Solving", question: "How old is your current mattress?",
-        helpText: "Most mattresses last 7–10 years", type: 'single',
+        id: 'current_mattress_age', category: {en: "What You're Solving", es: "Lo Que Buscas Resolver"}, question: {en: "How old is your current mattress?", es: "\u00bfCu\u00e1ntos a\u00f1os tiene tu colch\u00f3n actual?"},
+        helpText: {en: "Most mattresses last 7\u201310 years", es: "La mayor\u00eda de los colchones duran 7\u201310 a\u00f1os"}, type: 'single',
         options: [
-          { id: 'under_2', label: 'Less Than 2 Years', icon: 'check', sublabel: 'Pretty new', scores: {} },
-          { id: 'three_seven', label: '3 to 7 Years', icon: 'combo', sublabel: 'Middle of its life', scores: {} },
-          { id: 'eight_fifteen', label: '8 to 15 Years', icon: 'aging', sublabel: 'Past its prime', scores: {} },
-          { id: 'fifteen_plus', label: 'Over 15 Years', icon: 'sagging', sublabel: 'Long overdue', scores: {} },
-          { id: 'not_sure', label: 'Not Sure', icon: 'question', sublabel: "Can't remember", scores: {} }
+          { id: 'under_2', label: {en: 'Less Than 2 Years', es: 'Menos de 2 A\u00f1os'}, icon: 'check', sublabel: {en: 'Pretty new', es: 'Bastante nuevo'}, scores: {} },
+          { id: 'three_seven', label: {en: '3 to 7 Years', es: '3 a 7 A\u00f1os'}, icon: 'combo', sublabel: {en: 'Middle of its life', es: 'A mitad de su vida'}, scores: {} },
+          { id: 'eight_fifteen', label: {en: '8 to 15 Years', es: '8 a 15 A\u00f1os'}, icon: 'aging', sublabel: {en: 'Past its prime', es: 'Ya pas\u00f3 su mejor momento'}, scores: {} },
+          { id: 'fifteen_plus', label: {en: 'Over 15 Years', es: 'M\u00e1s de 15 A\u00f1os'}, icon: 'sagging', sublabel: {en: 'Long overdue', es: 'Ya era hora'}, scores: {} },
+          { id: 'not_sure', label: {en: 'Not Sure', es: 'No Estoy Seguro'}, icon: 'question', sublabel: {en: "Can't remember", es: "No recuerdo"}, scores: {} }
         ]
       },
       {
-        id: 'sleep_quality', category: "What You're Solving", question: "How well do you sleep right now?",
-        helpText: "Honest answer — we can help either way", type: 'single',
+        id: 'sleep_quality', category: {en: "What You're Solving", es: "Lo Que Buscas Resolver"}, question: {en: "How well do you sleep right now?", es: "\u00bfQu\u00e9 tan bien duermes actualmente?"},
+        helpText: {en: "Honest answer \u2014 we can help either way", es: "S\u00e9 honesto \u2014 podemos ayudarte de cualquier manera"}, type: 'single',
         options: [
-          { id: 'poor', label: 'Poorly', icon: 'stiff', sublabel: 'Restless, waking often', scores: {} },
-          { id: 'fair', label: 'Not Great', icon: 'combo', sublabel: 'Could be a lot better', scores: {} },
-          { id: 'okay', label: 'Okay', icon: 'smile', sublabel: 'Mostly fine', scores: {} },
-          { id: 'well', label: 'Pretty Well', icon: 'check', sublabel: 'Usually rested', scores: {} }
+          { id: 'poor', label: {en: 'Poorly', es: 'Mal'}, icon: 'stiff', sublabel: {en: 'Restless, waking often', es: 'Inquieto, despertando seguido'}, scores: {} },
+          { id: 'fair', label: {en: 'Not Great', es: 'No Muy Bien'}, icon: 'combo', sublabel: {en: 'Could be a lot better', es: 'Podr\u00eda ser mucho mejor'}, scores: {} },
+          { id: 'okay', label: {en: 'Okay', es: 'M\u00e1s o Menos'}, icon: 'smile', sublabel: {en: 'Mostly fine', es: 'Generalmente bien'}, scores: {} },
+          { id: 'well', label: {en: 'Pretty Well', es: 'Bastante Bien'}, icon: 'check', sublabel: {en: 'Usually rested', es: 'Generalmente descansado'}, scores: {} }
         ]
       },
       {
-        id: 'sleep_issues', category: "What You're Solving", question: "Any issues with your current mattress?",
-        helpText: "Pick your top 3", type: 'multiple',
+        id: 'sleep_issues', category: {en: "What You're Solving", es: "Lo Que Buscas Resolver"}, question: {en: "Any issues with your current mattress?", es: "\u00bfAlg\u00fan problema con tu colch\u00f3n actual?"},
+        helpText: {en: "Pick your top 3", es: "Elige los 3 principales"}, type: 'multiple',
         options: [
-          { id: 'back_pain', label: 'Back Pain', icon: 'spine', sublabel: 'Lower or upper back', scores: { support: 3, zoned: 2, firm: 1 } },
-          { id: 'hip_pain', label: 'Hip or Shoulder Pain', icon: 'pressure', sublabel: 'Pressure points', scores: { pressureRelief: 3, plush: 2 } },
-          { id: 'hot', label: 'Sleeping Too Hot', icon: 'flame', sublabel: 'Night sweats, overheating', scores: { cooling: 3, hybrid: 2 } },
-          { id: 'tossing', label: 'Tossing & Turning', icon: 'combo', sublabel: "Can't get comfortable", scores: { comfort: 2, medium: 1 } },
-          { id: 'stiff', label: 'Waking Up Stiff or Sore', icon: 'stiff', sublabel: 'Morning aches', scores: { pressureRelief: 2, comfort: 2 } },
-          { id: 'sagging', label: 'Mattress Sagging', icon: 'sagging', sublabel: 'Dips or indentations', scores: { durability: 2, quality: 2 } },
-          { id: 'too_soft', label: 'Mattress Too Soft', icon: 'couch', sublabel: 'Sinking in too much', scores: { firm: 3, support: 2 } },
-          { id: 'none', label: 'No Major Issues', icon: 'check', sublabel: 'Just time for an upgrade', scores: { comfort: 1, quality: 1, durable: 1 } }
+          { id: 'back_pain', label: {en: 'Back Pain', es: 'Dolor de Espalda'}, icon: 'spine', sublabel: {en: 'Lower or upper back', es: 'Espalda baja o alta'}, scores: { support: 3, zoned: 2, firm: 1 } },
+          { id: 'hip_pain', label: {en: 'Hip or Shoulder Pain', es: 'Dolor de Cadera u Hombro'}, icon: 'pressure', sublabel: {en: 'Pressure points', es: 'Puntos de presi\u00f3n'}, scores: { pressureRelief: 3, plush: 2 } },
+          { id: 'hot', label: {en: 'Sleeping Too Hot', es: 'Mucho Calor al Dormir'}, icon: 'flame', sublabel: {en: 'Night sweats, overheating', es: 'Sudores nocturnos, sobrecalentamiento'}, scores: { cooling: 3, hybrid: 2 } },
+          { id: 'tossing', label: {en: 'Tossing & Turning', es: 'Dando Vueltas'}, icon: 'combo', sublabel: {en: "Can't get comfortable", es: "No encuentro comodidad"}, scores: { comfort: 2, medium: 1 } },
+          { id: 'stiff', label: {en: 'Waking Up Stiff or Sore', es: 'Despertar R\u00edgido o Adolorido'}, icon: 'stiff', sublabel: {en: 'Morning aches', es: 'Dolores matutinos'}, scores: { pressureRelief: 2, comfort: 2 } },
+          { id: 'sagging', label: {en: 'Mattress Sagging', es: 'Colch\u00f3n Hundido'}, icon: 'sagging', sublabel: {en: 'Dips or indentations', es: 'Hundimientos'}, scores: { durability: 2, quality: 2 } },
+          { id: 'too_soft', label: {en: 'Mattress Too Soft', es: 'Colch\u00f3n Muy Suave'}, icon: 'couch', sublabel: {en: 'Sinking in too much', es: 'Me hundo demasiado'}, scores: { firm: 3, support: 2 } },
+          { id: 'none', label: {en: 'No Major Issues', es: 'Sin Problemas Grandes'}, icon: 'check', sublabel: {en: 'Just time for an upgrade', es: 'Solo es hora de un cambio'}, scores: { comfort: 1, quality: 1, durable: 1 } }
         ]
       },
       {
-        id: 'health_conditions', category: "What You're Solving", question: "Anything else going on that affects your sleep?",
-        helpText: "Pick your top 3", type: 'multiple',
+        id: 'health_conditions', category: {en: "What You're Solving", es: "Lo Que Buscas Resolver"}, question: {en: "Anything else going on that affects your sleep?", es: "\u00bfAlgo m\u00e1s que afecte tu sue\u00f1o?"},
+        helpText: {en: "Pick your top 3", es: "Elige los 3 principales"}, type: 'multiple',
         options: [
-          { id: 'nerve_pain', label: 'Nerve Pain or Tingling', icon: 'lightning', sublabel: 'Shooting pain, numbness', scores: { support: 3, firm: 2, zoned: 2 } },
-          { id: 'allergies', label: 'Allergies', icon: 'sneeze', sublabel: 'Dust, sneezing, stuffy', scores: { hypoallergenic: 3 } },
-          { id: 'snoring', label: 'Snoring or Sleep Apnea', icon: 'snore', sublabel: 'You or your partner', scores: { adjustable: 3 } },
-          { id: 'reflux', label: 'Acid Reflux / Heartburn', icon: 'flame', sublabel: 'Burns when lying down', scores: { adjustable: 3 } },
-          { id: 'extra_support', label: 'Need Extra Support', icon: 'weight', sublabel: 'Larger build or heavier weight', scores: { support: 3, firm: 2, durable: 3 } },
-          { id: 'getting_older', label: 'Changing Needs', icon: 'aging', sublabel: 'Looking for gentler support', scores: { support: 2, comfort: 2, pressureRelief: 1 } },
-          { id: 'none', label: 'None of These', icon: 'check', sublabel: "I'm good", scores: {} }
+          { id: 'nerve_pain', label: {en: 'Nerve Pain or Tingling', es: 'Dolor Nervioso u Hormigueo'}, icon: 'lightning', sublabel: {en: 'Shooting pain, numbness', es: 'Dolor punzante, entumecimiento'}, scores: { support: 3, firm: 2, zoned: 2 } },
+          { id: 'allergies', label: {en: 'Allergies', es: 'Alergias'}, icon: 'sneeze', sublabel: {en: 'Dust, sneezing, stuffy', es: 'Polvo, estornudos, congesti\u00f3n'}, scores: { hypoallergenic: 3 } },
+          { id: 'snoring', label: {en: 'Snoring or Sleep Apnea', es: 'Ronquidos o Apnea del Sue\u00f1o'}, icon: 'snore', sublabel: {en: 'You or your partner', es: 'T\u00fa o tu pareja'}, scores: { adjustable: 3 } },
+          { id: 'reflux', label: {en: 'Acid Reflux / Heartburn', es: 'Reflujo \u00c1cido / Acidez'}, icon: 'flame', sublabel: {en: 'Burns when lying down', es: 'Arde al acostarse'}, scores: { adjustable: 3 } },
+          { id: 'extra_support', label: {en: 'Need Extra Support', es: 'Necesito Soporte Extra'}, icon: 'weight', sublabel: {en: 'Larger build or heavier weight', es: 'Complexi\u00f3n grande o peso mayor'}, scores: { support: 3, firm: 2, durable: 3 } },
+          { id: 'getting_older', label: {en: 'Changing Needs', es: 'Necesidades Cambiantes'}, icon: 'aging', sublabel: {en: 'Looking for gentler support', es: 'Buscando soporte m\u00e1s suave'}, scores: { support: 2, comfort: 2, pressureRelief: 1 } },
+          { id: 'none', label: {en: 'None of These', es: 'Ninguno de Estos'}, icon: 'check', sublabel: {en: "I'm good", es: "Estoy bien"}, scores: {} }
         ]
       }
     ];
@@ -4058,8 +4155,27 @@
       } catch (e) {
         console.error('Failed to load app data:', e);
       }
+      await loadDictionary(currentLang);
       applyStoreConfig();
+      applyLanguageConfig();
+      applyTranslations();
     })();
+
+    // Show/hide language toggle based on store-config.languages array.
+    // If only one language is configured (or the field is missing), hide the toggle
+    // and keep the app in English. Retailers who want Spanish add "es" to the array.
+    function applyLanguageConfig() {
+      var langs = (STORE_CONFIG && Array.isArray(STORE_CONFIG.languages))
+        ? STORE_CONFIG.languages
+        : ['en'];
+      var toggle = document.getElementById('langToggle');
+      if (!toggle) return;
+      if (langs.length < 2) {
+        toggle.style.display = 'none';
+      } else {
+        toggle.style.display = 'flex';
+      }
+    }
 
     function applyStoreConfig() {
       if (!STORE_CONFIG.colors && !STORE_CONFIG.text) return;
@@ -4068,26 +4184,37 @@
       if (STORE_CONFIG.colors.storePrimaryLight) root.style.setProperty('--store-primary-light', STORE_CONFIG.colors.storePrimaryLight);
       if (STORE_CONFIG.colors.storePrimaryGlow) root.style.setProperty('--store-primary-glow', STORE_CONFIG.colors.storePrimaryGlow);
 
-      if (STORE_CONFIG.text) {
-        document.title = STORE_CONFIG.text.pageTitle || document.title;
+      // Pick the language-appropriate text block
+      var textBlock = (currentLang === 'es' && STORE_CONFIG.text_es)
+        ? STORE_CONFIG.text_es
+        : STORE_CONFIG.text;
+
+      if (textBlock) {
+        document.title = textBlock.pageTitle || document.title;
         var metaDesc = document.getElementById('metaDescription');
-        if (metaDesc && STORE_CONFIG.text.metaDescription) metaDesc.setAttribute('content', STORE_CONFIG.text.metaDescription);
+        if (metaDesc && textBlock.metaDescription) metaDesc.setAttribute('content', textBlock.metaDescription);
         var ogTitle = document.getElementById('ogTitle');
-        if (ogTitle && STORE_CONFIG.text.ogTitle) ogTitle.setAttribute('content', STORE_CONFIG.text.ogTitle);
+        if (ogTitle && textBlock.ogTitle) ogTitle.setAttribute('content', textBlock.ogTitle);
         document.querySelectorAll('[data-store="name"]').forEach(function(el) {
           el.textContent = STORE_CONFIG.storeName || el.textContent;
         });
+        document.querySelectorAll('[data-store="trust-signal"]').forEach(function(el) {
+          if (textBlock.trustSignal) el.textContent = textBlock.trustSignal;
+        });
+        document.querySelectorAll('[data-store="made-badge"]').forEach(function(el) {
+          if (textBlock.madeBadge) el.textContent = textBlock.madeBadge;
+        });
         document.querySelectorAll('[data-store="social-proof"]').forEach(function(el) {
-          el.textContent = STORE_CONFIG.text.socialProof || el.textContent;
+          el.textContent = textBlock.socialProof || el.textContent;
         });
         document.querySelectorAll('[data-store="footer"]').forEach(function(el) {
-          el.innerHTML = STORE_CONFIG.text.footer || el.innerHTML;
+          el.innerHTML = textBlock.footer || el.innerHTML;
         });
         document.querySelectorAll('[data-store="email-privacy"]').forEach(function(el) {
-          el.textContent = STORE_CONFIG.text.emailPrivacy || el.textContent;
+          el.textContent = textBlock.emailPrivacy || el.textContent;
         });
         document.querySelectorAll('[data-store="privacy-policy"]').forEach(function(el) {
-          el.textContent = STORE_CONFIG.text.privacyPolicy || el.textContent;
+          el.textContent = textBlock.privacyPolicy || el.textContent;
         });
       }
     }
@@ -4095,7 +4222,7 @@
     // Image folder: place product images in an "images/accessories/" folder next to this HTML file.
     // Naming convention: images/accessories/{product-id}.jpg
     // Fallback: if an image fails to load, it shows a styled placeholder with the product name.
-    const ACC_IMAGE_PATH = 'images/accessories/';
+    const ACC_IMAGE_PATH = 'https://beford782.github.io/DreamFinder/images/accessories/';
 
     const ACCESSORIES = [
       // Bases & Foundations (shown first)
@@ -4126,26 +4253,6 @@
         description: 'Ultra-slim 2" support board — distributes weight evenly, perfect for platform beds & bunk beds',
         subType: 'bunkie',
         matchTags: ['all'], matchScores: { default: 1 } },
-
-      // Pillows (shown second)
-      { id: 'pillow-activedry', name: 'Active Dry Pillow', category: 'Pillows', price: 120, 
-        image: 'images/accessories/pillow-activedry.webp',
-        description: 'Moisture-wicking memory foam blend with knife-edge multi-level support — all sleep positions',
-        matchTags: ['cooling', 'all_positions'], matchScores: { default: 2, cooling: 2, hot: 2, position_side: 1, position_back: 2, position_stomach: 1 } },
-      { id: 'pillow-activecool', name: 'Active Cool Pillow', category: 'Pillows', price: 160, 
-        image: 'images/accessories/pillow-activecool.webp',
-        description: 'Advanced active cooling fabric with premium memory foam clusters — conforms to head, neck & shoulders',
-        matchTags: ['hot_sleeper', 'cooling'], matchScores: { cooling: 4, hot: 4, position_side: 2, position_back: 2 } },
-      
-      // Mattress Protectors (shown last)
-      { id: 'protector-activedry', name: 'Active Dry Protector', category: 'Protectors', price: 100, 
-        image: 'images/accessories/protector-activedry.jpg',
-        description: 'Waterproof & breathable — wicks moisture so you stay cool and dry, extends mattress life',
-        matchTags: ['all'], matchScores: { default: 3, cooling: 1 } },
-      { id: 'protector-activecool', name: 'Active Cool Protector', category: 'Protectors', price: 200, 
-        image: 'images/accessories/protector-activecool.webp',
-        description: 'Advanced cooling + waterproof protection — hypoallergenic, helps you stay in deeper sleep stages longer',
-        matchTags: ['hot_sleeper', 'cooling'], matchScores: { cooling: 4, hot: 4, default: 2 } },
     ];
 
     // ----- APP STATE -----
@@ -4155,6 +4262,7 @@
     // ----- SCREEN MANAGEMENT -----
     window.showScreen = function(id) {
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      if (typeof applyTranslations === 'function') applyTranslations();
       document.getElementById(id).classList.add('active');
       const showProgress = id === 'questionScreen' || id === 'profileScreen' || id === 'reviewScreen';
       if (id === 'reviewScreen') {
@@ -4198,11 +4306,11 @@
 
     // ----- RENDER QUESTION -----
     function getProgressPhrase(idx, total) {
-      if (idx === 0) return "Let's get started";
-      if (idx === total - 1) return "Last one!";
-      if (idx >= total - 2) return "Almost done!";
-      if (idx >= Math.floor(total / 2)) return "You're halfway there";
-      return "Great, keep going";
+      if (idx === 0) return currentLang === 'es' ? 'Comencemos' : "Let's get started";
+      if (idx === total - 1) return currentLang === 'es' ? '¡La última!' : "Last one!";
+      if (idx >= total - 2) return currentLang === 'es' ? '¡Casi listo!' : "Almost done!";
+      if (idx >= Math.floor(total / 2)) return currentLang === 'es' ? 'Ya vas a la mitad' : "You're halfway there";
+      return currentLang === 'es' ? 'Muy bien, sigue así' : "Great, keep going";
     }
 
     // Compute the list of questions visible given current answers (skip logic).
@@ -4233,22 +4341,24 @@
 
       if (q.type === 'slider') {
         const val = answers[q.id] !== undefined ? answers[q.id] : q.defaultValue;
+        const backLabel = currentLang === 'es' ? '← Atrás' : '← Back';
+        const nextLabel = currentLang === 'es' ? 'Siguiente →' : 'Next →';
         container.innerHTML = `
-          <div class="question-category">${q.category}</div>
+          <div class="question-category">${L(q.category)}</div>
           <div class="question-number">${getProgressPhrase(stepIdx, total)}</div>
-          <div class="question-text">${q.question}</div>
-          <div class="question-help">${q.helpText}</div>
+          <div class="question-text">${L(q.question)}</div>
+          <div class="question-help">${L(q.helpText)}</div>
           <div class="slider-container">
             <div class="slider-value" id="sliderVal">${val}</div>
             <div class="slider-value-label" id="sliderLabel">${getFirmnessLabel(val)}</div>
             <input type="range" class="firmness-slider" id="firmnessSlider" min="${q.min}" max="${q.max}" value="${val}">
             <div class="slider-labels">
-              ${q.labels.map(l => `<span>${l}</span>`).join('')}
+              ${q.labels.map(l => `<span>${L(l)}</span>`).join('')}
             </div>
           </div>
           <div class="question-nav">
-            ${currentQuestion > 0 ? '<button class="nav-btn back" onclick="prevQuestion()">← Back</button>' : ''}
-            <button class="nav-btn next" onclick="nextQuestion()">Next →</button>
+            ${currentQuestion > 0 ? '<button class="nav-btn back" onclick="prevQuestion()">' + backLabel + '</button>' : ''}
+            <button class="nav-btn next" onclick="nextQuestion()">${nextLabel}</button>
           </div>
         `;
         const slider = document.getElementById('firmnessSlider');
@@ -4264,25 +4374,30 @@
         const selected = isMulti ? (answers[q.id] || []) : answers[q.id];
         const colClass = displayOptions.length <= 3 ? 'single-col' : (displayOptions.length > 8 ? 'compact' : '');
 
+        const backLabel = currentLang === 'es' ? '← Atrás' : '← Back';
+        const nextLabel = currentQuestion === total - 1
+          ? (currentLang === 'es' ? 'Ver Mis Resultados →' : 'See My Results →')
+          : (currentLang === 'es' ? 'Siguiente →' : 'Next →');
+        const multiNote = currentLang === 'es' ? 'Elige los 3 principales' : 'Pick your top 3';
         container.innerHTML = `
-          <div class="question-category">${q.category}</div>
+          <div class="question-category">${L(q.category)}</div>
           <div class="question-number">${getProgressPhrase(stepIdx, total)}</div>
-          <div class="question-text">${q.question}</div>
-          <div class="question-help">${q.helpText}</div>
-          ${isMulti ? '<div class="multi-note" id="multiNote">Pick your top 3</div>' : ''}
+          <div class="question-text">${L(q.question)}</div>
+          <div class="question-help">${L(q.helpText)}</div>
+          ${isMulti ? '<div class="multi-note" id="multiNote">' + multiNote + '</div>' : ''}
           <div class="options-grid ${colClass}">
             ${displayOptions.map(opt => `
               <button class="option-btn ${isMulti ? (selected.includes(opt.id) ? 'selected' : '') : (selected === opt.id ? 'selected' : '')}"
                 onclick="selectOption('${q.id}', '${opt.id}', ${isMulti})">
                 <span class="opt-icon">${opt.icon ? icon(opt.icon, 28) : ''}</span>
-                <span class="opt-label">${opt.label}</span>
-                ${opt.sublabel && displayOptions.length <= 6 ? `<span class="opt-sub">${opt.sublabel}</span>` : ''}
+                <span class="opt-label">${L(opt.label)}</span>
+                ${opt.sublabel && displayOptions.length <= 6 ? `<span class="opt-sub">${L(opt.sublabel)}</span>` : ''}
               </button>
             `).join('')}
           </div>
           <div class="question-nav">
-            ${currentQuestion > 0 ? '<button class="nav-btn back" onclick="prevQuestion()">← Back</button>' : ''}
-            <button class="nav-btn next" id="nextBtn" onclick="nextQuestion()" ${!isMulti && !selected ? 'disabled' : ''}>${currentQuestion === total - 1 ? 'See My Results →' : 'Next →'}</button>
+            ${currentQuestion > 0 ? '<button class="nav-btn back" onclick="prevQuestion()">' + backLabel + '</button>' : ''}
+            <button class="nav-btn next" id="nextBtn" onclick="nextQuestion()" ${!isMulti && !selected ? 'disabled' : ''}>${nextLabel}</button>
           </div>
         `;
       }
@@ -4301,6 +4416,13 @@
     }
 
     function getFirmnessLabel(val) {
+      if (currentLang === 'es') {
+        if (val <= 2) return 'Muy Suave';
+        if (val <= 4) return 'Suave a Medio';
+        if (val <= 6) return 'Medio';
+        if (val <= 8) return 'Medio Firme a Firme';
+        return 'Extra Firme';
+      }
       if (val <= 2) return 'Very Soft';
       if (val <= 4) return 'Soft to Medium';
       if (val <= 6) return 'Medium';
@@ -4404,25 +4526,26 @@
         if (!v || !v.length) return '—';
         return v.map(function(id) {
           var o = q.options.find(function(x) { return x.id === id; });
-          return o ? o.label : id;
+          return o ? L(o.label) : id;
         }).join(', ');
       }
       var opt = q.options && q.options.find(function(x) { return x.id === v; });
-      return opt ? opt.label : '—';
+      return opt ? L(opt.label) : '—';
     }
 
     window.renderReview = function() {
       const list = document.getElementById('reviewList');
+      const editLabel = currentLang === 'es' ? 'Editar' : 'Edit';
       const items = visibleQuestions().map(function(q) {
         const val = formatAnswer(q, answers[q.id]);
         const idx = QUESTIONS.indexOf(q);
         return '<div class="review-row" style="display:flex; justify-content:space-between; align-items:center; gap:0.75rem; padding:0.75rem 0; border-bottom:1px solid rgba(255,255,255,0.08);">'
           + '<div style="flex:1; min-width:0;">'
-          +   '<div style="font-size:0.65rem; color:var(--gold); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:0.15rem;">' + q.category + '</div>'
-          +   '<div style="font-size:0.9rem; color:var(--cream); font-weight:500;">' + q.question + '</div>'
+          +   '<div style="font-size:0.65rem; color:var(--gold); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:0.15rem;">' + L(q.category) + '</div>'
+          +   '<div style="font-size:0.9rem; color:var(--cream); font-weight:500;">' + L(q.question) + '</div>'
           +   '<div style="font-size:0.85rem; color:var(--cream-dim); margin-top:0.2rem;">' + val + '</div>'
           + '</div>'
-          + '<button class="js-review-edit" data-idx="' + idx + '" onclick="window.editAnswer(' + idx + ')" ontouchend="event.preventDefault();window.editAnswer(' + idx + ');" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:var(--cream); font-size:0.72rem; font-family:inherit; font-weight:600; padding:0.4rem 0.85rem; border-radius:8px; touch-action:manipulation; cursor:pointer;">Edit</button>'
+          + '<button class="js-review-edit" data-idx="' + idx + '" onclick="window.editAnswer(' + idx + ')" ontouchend="event.preventDefault();window.editAnswer(' + idx + ');" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:var(--cream); font-size:0.72rem; font-family:inherit; font-weight:600; padding:0.4rem 0.85rem; border-radius:8px; touch-action:manipulation; cursor:pointer;">' + editLabel + '</button>'
           + '</div>';
       }).join('');
       list.innerHTML = items;
@@ -4494,7 +4617,7 @@
       Object.values(MATTRESSES).flat().forEach(m => {
         if (m.locallyMade === true) {
           scores[m.id] += 25;
-          matchReasons[m.id].push('Made locally — typically in stock and ready for fast delivery');
+          matchReasons[m.id].push(currentLang === 'es' ? 'Hecho localmente — generalmente en stock y listo para entrega rápida' : 'Made locally — typically in stock and ready for fast delivery');
         }
       });
 
@@ -4506,42 +4629,42 @@
     // Maps each of the 16 profile archetypes to a theme class and a fake-but-
     // plausible "1 in N" frequency so the reveal feels specific.
     const PROFILE_META = {
-      'The Ache Fighter':    { theme: 'warm',      rarity: 6  },
-      'The Back Saver':      { theme: 'warm',      rarity: 8  },
-      'The Heat Beater':     { theme: 'cool',      rarity: 5  },
-      'The Cozy Nester':     { theme: 'cool',      rarity: 12 },
-      'The Peacekeeper':     { theme: 'calm',      rarity: 7  },
-      'The Space Sharer':    { theme: 'calm',      rarity: 18 },
-      'The Cloud Chaser':    { theme: 'cool',      rarity: 9  },
-      'The Rock Solid':      { theme: 'energetic', rarity: 10 },
-      'The Night Owl':       { theme: 'calm',      rarity: 20 },
-      'The Restorer':        { theme: 'calm',      rarity: 14 },
-      'The Comeback':        { theme: 'warm',      rarity: 15 },
-      'The Fresh Start':     { theme: 'cool',      rarity: 22 },
-      'The Goldilocks':      { theme: 'energetic', rarity: 11 },
-      'The Dreamer':         { theme: 'energetic', rarity: 13 },
-      'The Steady Sleeper':  { theme: 'energetic', rarity: 9  },
-      'The Connoisseur':     { theme: 'energetic', rarity: 25 }
+      'The Ache Fighter':    { theme: 'warm',      rarity: 6,  name_es: 'El Guerrero del Dolor' },
+      'The Back Saver':      { theme: 'warm',      rarity: 8,  name_es: 'El Protector de Espalda' },
+      'The Heat Beater':     { theme: 'cool',      rarity: 5,  name_es: 'El Vencedor del Calor' },
+      'The Cozy Nester':     { theme: 'cool',      rarity: 12, name_es: 'El Acurrucado' },
+      'The Peacekeeper':     { theme: 'calm',      rarity: 7,  name_es: 'El Pacificador' },
+      'The Space Sharer':    { theme: 'calm',      rarity: 18, name_es: 'El Que Comparte Espacio' },
+      'The Cloud Chaser':    { theme: 'cool',      rarity: 9,  name_es: 'El Cazador de Nubes' },
+      'The Rock Solid':      { theme: 'energetic', rarity: 10, name_es: 'El Roca Firme' },
+      'The Night Owl':       { theme: 'calm',      rarity: 20, name_es: 'El Búho Nocturno' },
+      'The Restorer':        { theme: 'calm',      rarity: 14, name_es: 'El Restaurador' },
+      'The Comeback':        { theme: 'warm',      rarity: 15, name_es: 'El Regreso' },
+      'The Fresh Start':     { theme: 'cool',      rarity: 22, name_es: 'El Nuevo Comienzo' },
+      'The Goldilocks':      { theme: 'energetic', rarity: 11, name_es: 'El Equilibrado' },
+      'The Dreamer':         { theme: 'energetic', rarity: 13, name_es: 'El Soñador' },
+      'The Steady Sleeper':  { theme: 'energetic', rarity: 9,  name_es: 'El Durmiente Estable' },
+      'The Connoisseur':     { theme: 'energetic', rarity: 25, name_es: 'El Conocedor' }
     };
 
     // Profile-specific one-liner openers (replace the generic "We'll find you a...")
     const PROFILE_OPENERS = {
-      'The Ache Fighter':   "Let's get you out of pain. You need a ",
-      'The Back Saver':     "To support that back, we need a ",
-      'The Heat Beater':    "No more night sweats. You need a ",
-      'The Cozy Nester':    "Let's wrap you up warm with a ",
-      'The Peacekeeper':    "To keep the peace at night, we'll find you a ",
-      'The Space Sharer':   "With the whole family in bed, you'll want a ",
-      'The Cloud Chaser':   "Floating on a cloud means a ",
-      'The Rock Solid':     "For that firm foundation, you need a ",
-      'The Night Owl':      "To tame the night, we recommend a ",
-      'The Restorer':       "To truly recharge, you need a ",
-      'The Comeback':       "Time for a sleep comeback. You need a ",
-      'The Fresh Start':    "Breathe easy — you need a ",
-      'The Goldilocks':     "You know what you like. Here's a ",
-      'The Dreamer':        "Dream bigger with a ",
-      'The Steady Sleeper': "Steady and balanced — you'll love a ",
-      'The Connoisseur':    "For a discerning sleeper like you, we recommend a "
+      'The Ache Fighter':   {en: "Let's get you out of pain. You need a ", es: "Vamos a sacarte del dolor. Necesitas un "},
+      'The Back Saver':     {en: "To support that back, we need a ", es: "Para apoyar esa espalda, necesitamos un "},
+      'The Heat Beater':    {en: "No more night sweats. You need a ", es: "No más sudores nocturnos. Necesitas un "},
+      'The Cozy Nester':    {en: "Let's wrap you up warm with a ", es: "Vamos a arroparte con un "},
+      'The Peacekeeper':    {en: "To keep the peace at night, we'll find you a ", es: "Para mantener la paz nocturna, te encontraremos un "},
+      'The Space Sharer':   {en: "With the whole family in bed, you'll want a ", es: "Con toda la familia en la cama, querrás un "},
+      'The Cloud Chaser':   {en: "Floating on a cloud means a ", es: "Flotar en una nube significa un "},
+      'The Rock Solid':     {en: "For that firm foundation, you need a ", es: "Para esa base firme, necesitas un "},
+      'The Night Owl':      {en: "To tame the night, we recommend a ", es: "Para domar la noche, recomendamos un "},
+      'The Restorer':       {en: "To truly recharge, you need a ", es: "Para recargar de verdad, necesitas un "},
+      'The Comeback':       {en: "Time for a sleep comeback. You need a ", es: "Es hora de volver a dormir bien. Necesitas un "},
+      'The Fresh Start':    {en: "Breathe easy — you need a ", es: "Respira tranquilo — necesitas un "},
+      'The Goldilocks':     {en: "You know what you like. Here's a ", es: "Sabes lo que te gusta. Aquí tienes un "},
+      'The Dreamer':        {en: "Dream bigger with a ", es: "Sueña en grande con un "},
+      'The Steady Sleeper': {en: "Steady and balanced — you'll love a ", es: "Estable y equilibrado — te encantará un "},
+      'The Connoisseur':    {en: "For a discerning sleeper like you, we recommend a ", es: "Para un durmiente exigente como tú, recomendamos un "}
     };
 
     // Builds the italic opener line based on trigger / mattress age / sleep quality.
@@ -4550,18 +4673,19 @@
       const trigger = answers.trigger;
       const quality = answers.sleep_quality;
       const age = answers.current_mattress_age;
+      const es = currentLang === 'es';
 
       // Highest-priority hooks: pain, moving, poor sleep, very old mattress
-      if (trigger === 'pain') return 'Pain is temporary — let\'s end it tonight.';
-      if (quality === 'poor') return 'You said you\'re sleeping poorly. That ends here.';
-      if (trigger === 'moving') return 'New home, new bed — the first night should feel like home.';
-      if (age === 'fifteen_plus') return 'Your mattress has earned its retirement.';
-      if (age === 'eight_fifteen') return 'Time to retire that old mattress.';
-      if (trigger === 'worn_out') return 'You\'ve waited long enough for better sleep.';
-      if (trigger === 'upgrade') return 'You\'re ready to level up.';
-      if (quality === 'fair') return 'Your sleep deserves better than fine.';
-      if (trigger === 'browsing' && quality === 'well') return 'Already sleeping well? Let\'s keep that going.';
-      if (trigger === 'browsing') return 'Curious minds sleep better — here\'s what fits you.';
+      if (trigger === 'pain') return es ? 'El dolor es temporal — terminemos con él esta noche.' : 'Pain is temporary — let\'s end it tonight.';
+      if (quality === 'poor') return es ? 'Dijiste que duermes mal. Eso se acaba aquí.' : 'You said you\'re sleeping poorly. That ends here.';
+      if (trigger === 'moving') return es ? 'Casa nueva, cama nueva — la primera noche debe sentirse como hogar.' : 'New home, new bed — the first night should feel like home.';
+      if (age === 'fifteen_plus') return es ? 'Tu colchón se ganó su jubilación.' : 'Your mattress has earned its retirement.';
+      if (age === 'eight_fifteen') return es ? 'Es hora de jubilar ese colchón viejo.' : 'Time to retire that old mattress.';
+      if (trigger === 'worn_out') return es ? 'Has esperado suficiente para dormir mejor.' : 'You\'ve waited long enough for better sleep.';
+      if (trigger === 'upgrade') return es ? 'Estás listo para mejorar.' : 'You\'re ready to level up.';
+      if (quality === 'fair') return es ? 'Tu sueño merece más que solo \'bien\'.' : 'Your sleep deserves better than fine.';
+      if (trigger === 'browsing' && quality === 'well') return es ? '¿Ya duermes bien? Mantengamos eso así.' : 'Already sleeping well? Let\'s keep that going.';
+      if (trigger === 'browsing') return es ? 'Las mentes curiosas duermen mejor — esto es lo tuyo.' : 'Curious minds sleep better — here\'s what fits you.';
       return '';
     }
 
@@ -4578,17 +4702,20 @@
 
       // ----- ASSIGN PROFILE (16 types) -----
       const fullPositionLabels = {
-        'side': 'Side Sleeper', 'back': 'Back Sleeper', 'stomach': 'Stomach Sleeper',
-        'combo': 'Combo Sleeper', 'no_idea': 'Restless Sleeper'
+        'side': {en: 'Side Sleeper', es: 'De Lado'},
+        'back': {en: 'Back Sleeper', es: 'Boca Arriba'},
+        'stomach': {en: 'Stomach Sleeper', es: 'Boca Abajo'},
+        'combo': {en: 'Combo Sleeper', es: 'Combinación'},
+        'no_idea': {en: 'Restless Sleeper', es: 'Durmiente Inquieto'}
       };
 
       // Build subtitle: temperature + position + partner context
       var subtitle = '';
-      if (temp === 'hot') subtitle += 'Hot ';
-      else if (temp === 'cold') subtitle += 'Cozy ';
-      subtitle += fullPositionLabels[position] || 'Sleeper';
-      if (partnerSleep === 'partner') subtitle += ' \u00B7 Shared Bed';
-      else if (partnerSleep === 'family') subtitle += ' \u00B7 Family Bed';
+      if (temp === 'hot') subtitle += currentLang === 'es' ? 'Caluroso ' : 'Hot ';
+      else if (temp === 'cold') subtitle += currentLang === 'es' ? 'Friolento ' : 'Cozy ';
+      subtitle += L(fullPositionLabels[position]) || (currentLang === 'es' ? 'Durmiente' : 'Sleeper');
+      if (partnerSleep === 'partner') subtitle += currentLang === 'es' ? ' \u00B7 Cama Compartida' : ' \u00B7 Shared Bed';
+      else if (partnerSleep === 'family') subtitle += currentLang === 'es' ? ' \u00B7 Cama Familiar' : ' \u00B7 Family Bed';
       
       // Count pain signals
       var painCount = 0;
@@ -4670,13 +4797,14 @@
         profileIconKey = 'moon';
       }
       
-      // Update profile display
-      document.getElementById('profileIcon').innerHTML = icon(profileIconKey, 56);
-      document.getElementById('profileTitle').innerHTML = '<span class="profile-highlight">' + profileName + '</span>';
-      document.getElementById('profileSubtitle').textContent = subtitle;
-
       // Apply per-profile theme class (warm / cool / calm / energetic)
       var meta = PROFILE_META[profileName] || { theme: 'energetic', rarity: 10 };
+
+      // Update profile display
+      document.getElementById('profileIcon').innerHTML = icon(profileIconKey, 56);
+      var displayName = currentLang === 'es' && meta.name_es ? meta.name_es : profileName;
+      document.getElementById('profileTitle').innerHTML = '<span class="profile-highlight">' + displayName + '</span>';
+      document.getElementById('profileSubtitle').textContent = subtitle;
       var profileScreenEl = document.getElementById('profileScreen');
       profileScreenEl.classList.remove('theme-warm', 'theme-cool', 'theme-calm', 'theme-energetic');
       profileScreenEl.classList.add('theme-' + meta.theme);
@@ -4696,35 +4824,38 @@
       if (partnerSleep && partnerSleep !== 'solo') dataPoints++;
       if (firmness !== 5) dataPoints++;
       var confidence = Math.min(Math.round(70 + (dataPoints * 4)), 98);
-      document.getElementById('profileConfidence').textContent = confidence + '% profile match confidence \u00B7 Based on ' + visibleQuestions().length + ' answers';
+      document.getElementById('profileConfidence').textContent = currentLang === 'es'
+        ? confidence + '% confianza de perfil \u00B7 Basado en ' + visibleQuestions().length + ' respuestas'
+        : confidence + '% profile match confidence \u00B7 Based on ' + visibleQuestions().length + ' answers';
       // Surface the confidence visibly as a pill under the subtitle
-      document.getElementById('profileConfidencePill').textContent = confidence + '% Match Confidence';
+      document.getElementById('profileConfidencePill').textContent = currentLang === 'es' ? confidence + '% Confianza' : confidence + '% Match Confidence';
       // Social proof: "1 in N customers share this profile"
-      document.getElementById('profileSocialProof').textContent =
-        '1 in ' + meta.rarity + ' customers share this profile';
+      document.getElementById('profileSocialProof').textContent = currentLang === 'es'
+        ? '1 de ' + meta.rarity + ' clientes comparten este perfil'
+        : '1 in ' + meta.rarity + ' customers share this profile';
 
       // ----- BUILD STAT GRID -----
       var sizeLabels = { twin: 'Twin', twin_xl: 'Twin XL', full: 'Full', queen: 'Queen', king: 'King', cal_king: 'Cal King' };
       var sizeVal = sizeLabels[answers.mattress_size] || '—';
-      var firmVal = firmness <= 3 ? 'Plush' : firmness >= 7 ? 'Firm' : 'Medium';
-      var tempVal = temp === 'hot' ? 'Hot' : temp === 'cold' ? 'Cold' : temp === 'opposite' ? 'Mixed' : 'Normal';
+      var firmVal = firmness <= 3 ? (currentLang === 'es' ? 'Suave' : 'Plush') : firmness >= 7 ? (currentLang === 'es' ? 'Firme' : 'Firm') : (currentLang === 'es' ? 'Medio' : 'Medium');
+      var tempVal = temp === 'hot' ? (currentLang === 'es' ? 'Caliente' : 'Hot') : temp === 'cold' ? (currentLang === 'es' ? 'Frío' : 'Cold') : temp === 'opposite' ? (currentLang === 'es' ? 'Mixto' : 'Mixed') : 'Normal';
       document.getElementById('profileStatGrid').innerHTML =
-        '<div class="profile-stat-cell"><div class="profile-stat-value">' + sizeVal + '</div><div class="profile-stat-label">Size</div></div>' +
-        '<div class="profile-stat-cell"><div class="profile-stat-value">' + firmVal + '</div><div class="profile-stat-label">Firmness</div></div>' +
-        '<div class="profile-stat-cell"><div class="profile-stat-value">' + tempVal + '</div><div class="profile-stat-label">Temp</div></div>';
+        '<div class="profile-stat-cell"><div class="profile-stat-value">' + sizeVal + '</div><div class="profile-stat-label">' + (currentLang === 'es' ? 'Tamaño' : 'Size') + '</div></div>' +
+        '<div class="profile-stat-cell"><div class="profile-stat-value">' + firmVal + '</div><div class="profile-stat-label">' + (currentLang === 'es' ? 'Firmeza' : 'Firmness') + '</div></div>' +
+        '<div class="profile-stat-cell"><div class="profile-stat-value">' + tempVal + '</div><div class="profile-stat-label">' + (currentLang === 'es' ? 'Temp.' : 'Temp') + '</div></div>';
       
       // ----- BUILD CHIPS -----
       const chips = [];
-      const shortPosLabels = { side: 'Side', back: 'Back', stomach: 'Stomach', combo: 'Combo', no_idea: 'Restless' };
-      chips.push({ icon: position || 'side', label: shortPosLabels[position] || 'Sleeper' });
-      if (temp === 'hot') chips.push({ icon: 'flame', label: 'Hot' });
-      else if (temp === 'cold') chips.push({ icon: 'snowflake', label: 'Cold' });
-      if (firmness <= 3) chips.push({ icon: 'cloud', label: 'Plush' });
-      else if (firmness >= 7) chips.push({ icon: 'rock', label: 'Firm' });
-      if (partnerSleep === 'partner' || partnerSleep === 'family') chips.push({ icon: 'partner', label: 'Shared' });
-      if (issues.includes('back_pain')) chips.push({ icon: 'spine', label: 'Back' });
-      if (issues.includes('hip_pain')) chips.push({ icon: 'pressure', label: 'Hips' });
-      if (issues.includes('hot') && temp !== 'hot') chips.push({ icon: 'flame', label: 'Hot' });
+      const shortPosLabels = { side: {en:'Side',es:'Lado'}, back: {en:'Back',es:'Espalda'}, stomach: {en:'Stomach',es:'Boca Abajo'}, combo: {en:'Combo',es:'Combo'}, no_idea: {en:'Restless',es:'Inquieto'} };
+      chips.push({ icon: position || 'side', label: L(shortPosLabels[position]) || (currentLang === 'es' ? 'Durmiente' : 'Sleeper') });
+      if (temp === 'hot') chips.push({ icon: 'flame', label: currentLang === 'es' ? 'Caliente' : 'Hot' });
+      else if (temp === 'cold') chips.push({ icon: 'snowflake', label: currentLang === 'es' ? 'Frío' : 'Cold' });
+      if (firmness <= 3) chips.push({ icon: 'cloud', label: currentLang === 'es' ? 'Suave' : 'Plush' });
+      else if (firmness >= 7) chips.push({ icon: 'rock', label: currentLang === 'es' ? 'Firme' : 'Firm' });
+      if (partnerSleep === 'partner' || partnerSleep === 'family') chips.push({ icon: 'partner', label: currentLang === 'es' ? 'Compartido' : 'Shared' });
+      if (issues.includes('back_pain')) chips.push({ icon: 'spine', label: currentLang === 'es' ? 'Espalda' : 'Back' });
+      if (issues.includes('hip_pain')) chips.push({ icon: 'pressure', label: currentLang === 'es' ? 'Cadera' : 'Hips' });
+      if (issues.includes('hot') && temp !== 'hot') chips.push({ icon: 'flame', label: currentLang === 'es' ? 'Caliente' : 'Hot' });
       
       document.getElementById('profileChips').innerHTML = chips.map(function(c) {
         return '<div class="profile-chip">' + icon(c.icon, 14) + ' ' + c.label + '</div>';
@@ -4732,63 +4863,67 @@
       
       // ----- BUILD ONE-LINER -----
       var recParts = [];
-      if (temp === 'hot' || issues.includes('hot')) recParts.push('<strong>cooling mattress</strong>');
-      if (position === 'side' || firmness <= 3) recParts.push('<strong>plush pressure relief</strong>');
-      else if (position === 'stomach' || firmness >= 7) recParts.push('<strong>firm support</strong>');
-      else recParts.push('<strong>balanced comfort</strong>');
-      if (partnerDisturbance === 'yes_often' || partnerDisturbance === 'sometimes' || partnerSleep === 'partner' || partnerSleep === 'family') recParts.push('<strong>motion isolation</strong>');
-      if (issues.includes('back_pain') || health.includes('extra_support')) recParts.push('<strong>lumbar support</strong>');
-      
-      var oneliner = PROFILE_OPENERS[profileName] || "We'll find you a ";
+      if (temp === 'hot' || issues.includes('hot')) recParts.push(currentLang === 'es' ? '<strong>colchón con enfriamiento</strong>' : '<strong>cooling mattress</strong>');
+      if (position === 'side' || firmness <= 3) recParts.push(currentLang === 'es' ? '<strong>alivio de presión suave</strong>' : '<strong>plush pressure relief</strong>');
+      else if (position === 'stomach' || firmness >= 7) recParts.push(currentLang === 'es' ? '<strong>soporte firme</strong>' : '<strong>firm support</strong>');
+      else recParts.push(currentLang === 'es' ? '<strong>comodidad equilibrada</strong>' : '<strong>balanced comfort</strong>');
+      if (partnerDisturbance === 'yes_often' || partnerDisturbance === 'sometimes' || partnerSleep === 'partner' || partnerSleep === 'family') recParts.push(currentLang === 'es' ? '<strong>aislamiento de movimiento</strong>' : '<strong>motion isolation</strong>');
+      if (issues.includes('back_pain') || health.includes('extra_support')) recParts.push(currentLang === 'es' ? '<strong>soporte lumbar</strong>' : '<strong>lumbar support</strong>');
+
+      var openerObj = PROFILE_OPENERS[profileName] || {en: "We'll find you a ", es: "Te encontraremos un "};
+      var oneliner = L(openerObj);
+      var withConn = currentLang === 'es' ? ' con ' : ' with ';
+      var andConn = currentLang === 'es' ? ' y ' : ', and ';
       if (recParts.length === 1) {
         oneliner += recParts[0];
       } else if (recParts.length === 2) {
-        oneliner += recParts[0] + ' with ' + recParts[1];
+        oneliner += recParts[0] + withConn + recParts[1];
       } else {
         var lastPart = recParts.pop();
-        oneliner += recParts.join(', ') + ', and ' + lastPart;
+        oneliner += recParts.join(', ') + andConn + lastPart;
       }
       oneliner += '.';
       document.getElementById('profileOneliner').innerHTML = oneliner;
       
       // ----- INFER PRIORITIES FOR CARDS -----
       const priorities = [];
-      
+      var es = currentLang === 'es';
+
       var coolingScore = 0;
       if (temp === 'hot') coolingScore += 40;
       if (issues.includes('hot')) coolingScore += 30;
-      if (coolingScore >= 40) priorities.push({ icon: 'cooling', name: 'Temperature Regulation', why: temp === 'hot' ? 'You sleep hot — cooling tech will make a big difference' : 'Night sweats noted — cooling layers prioritized', badge: 'KEY NEED', fill: Math.min(coolingScore + 35, 95) });
-      
+      if (coolingScore >= 40) priorities.push({ icon: 'cooling', name: es ? 'Regulación de Temperatura' : 'Temperature Regulation', why: temp === 'hot' ? (es ? 'Duermes con calor — la tecnología de enfriamiento hará una gran diferencia' : 'You sleep hot — cooling tech will make a big difference') : (es ? 'Sudores nocturnos notados — capas de enfriamiento priorizadas' : 'Night sweats noted — cooling layers prioritized'), badge: es ? 'NECESIDAD CLAVE' : 'KEY NEED', fill: Math.min(coolingScore + 35, 95) });
+
       var pressureScore = 0;
       if (position === 'side') pressureScore += 35;
       if (issues.includes('hip_pain')) pressureScore += 30;
       if (issues.includes('stiff')) pressureScore += 15;
-      if (pressureScore >= 30) priorities.push({ icon: 'target', name: 'Pressure Relief', why: position === 'side' ? 'Side sleepers need cushioning at hips & shoulders' : 'Hip and joint comfort is a priority', badge: 'KEY NEED', fill: Math.min(pressureScore + 35, 95) });
-      
+      if (pressureScore >= 30) priorities.push({ icon: 'target', name: es ? 'Alivio de Presión' : 'Pressure Relief', why: position === 'side' ? (es ? 'Los que duermen de lado necesitan amortiguación en caderas y hombros' : 'Side sleepers need cushioning at hips & shoulders') : (es ? 'La comodidad de caderas y articulaciones es prioridad' : 'Hip and joint comfort is a priority'), badge: es ? 'NECESIDAD CLAVE' : 'KEY NEED', fill: Math.min(pressureScore + 35, 95) });
+
       var supportScore = 0;
       if (issues.includes('back_pain')) supportScore += 35;
       if (position === 'back') supportScore += 20;
       if (position === 'stomach') supportScore += 25;
       if (health.includes('extra_support')) supportScore += 30;
-      if (supportScore >= 20) priorities.push({ icon: 'support', name: 'Spinal Support', why: issues.includes('back_pain') ? 'Back pain noted — reinforced support zone essential' : 'Your sleep position calls for strong lumbar alignment', badge: 'KEY NEED', fill: Math.min(supportScore + 40, 95) });
-      
+      if (supportScore >= 20) priorities.push({ icon: 'support', name: es ? 'Soporte Espinal' : 'Spinal Support', why: issues.includes('back_pain') ? (es ? 'Dolor de espalda notado — zona de soporte reforzada esencial' : 'Back pain noted — reinforced support zone essential') : (es ? 'Tu posición de sueño requiere fuerte alineación lumbar' : 'Your sleep position calls for strong lumbar alignment'), badge: es ? 'NECESIDAD CLAVE' : 'KEY NEED', fill: Math.min(supportScore + 40, 95) });
+
       if (partnerDisturbance === 'yes_often' || partnerDisturbance === 'sometimes' || partnerSleep === 'partner' || partnerSleep === 'family') {
-        var motionWhy = partnerDisturbance === 'yes_often' ? 'Partner movement wakes you — pocketed coils are essential' : partnerDisturbance === 'sometimes' ? 'Partner movement is an issue — motion isolation recommended' : 'Shared bed — motion isolation reduces sleep disruption';
-        priorities.push({ icon: 'motion', name: 'Motion Isolation', why: motionWhy, badge: partnerDisturbance === 'yes_often' ? 'HIGH PRIORITY' : 'RECOMMENDED', fill: partnerDisturbance === 'yes_often' ? 92 : 80 });
+        var motionWhy = partnerDisturbance === 'yes_often' ? (es ? 'El movimiento de tu pareja te despierta — resortes encapsulados son esenciales' : 'Partner movement wakes you — pocketed coils are essential') : partnerDisturbance === 'sometimes' ? (es ? 'El movimiento de tu pareja es un problema — aislamiento de movimiento recomendado' : 'Partner movement is an issue — motion isolation recommended') : (es ? 'Cama compartida — aislamiento de movimiento reduce interrupciones' : 'Shared bed — motion isolation reduces sleep disruption');
+        priorities.push({ icon: 'motion', name: es ? 'Aislamiento de Movimiento' : 'Motion Isolation', why: motionWhy, badge: partnerDisturbance === 'yes_often' ? (es ? 'ALTA PRIORIDAD' : 'HIGH PRIORITY') : (es ? 'RECOMENDADO' : 'RECOMMENDED'), fill: partnerDisturbance === 'yes_often' ? 92 : 80 });
       }
-      
-      if (firmness <= 3) priorities.push({ icon: 'cloud', name: 'Plush Comfort', why: 'You prefer a soft, sink-in feel', badge: 'PREFERENCE', fill: 80 });
-      else if (firmness >= 7) priorities.push({ icon: 'rock', name: 'Firm Feel', why: 'You prefer solid, firm support underfoot', badge: 'PREFERENCE', fill: 80 });
-      else priorities.push({ icon: 'target', name: 'Balanced Comfort', why: 'Medium feel — supportive without being too firm or soft', badge: 'PREFERENCE', fill: 70 });
-      
+
+      if (firmness <= 3) priorities.push({ icon: 'cloud', name: es ? 'Comodidad Suave' : 'Plush Comfort', why: es ? 'Prefieres una sensación suave y envolvente' : 'You prefer a soft, sink-in feel', badge: es ? 'PREFERENCIA' : 'PREFERENCE', fill: 80 });
+      else if (firmness >= 7) priorities.push({ icon: 'rock', name: es ? 'Sensación Firme' : 'Firm Feel', why: es ? 'Prefieres soporte sólido y firme' : 'You prefer solid, firm support underfoot', badge: es ? 'PREFERENCIA' : 'PREFERENCE', fill: 80 });
+      else priorities.push({ icon: 'target', name: es ? 'Comodidad Equilibrada' : 'Balanced Comfort', why: es ? 'Sensación media — soporte sin ser muy firme ni suave' : 'Medium feel — supportive without being too firm or soft', badge: es ? 'PREFERENCIA' : 'PREFERENCE', fill: 70 });
+
       // Sort by score descending, take top 3
       priorities.sort(function(a, b) { return b.fill - a.fill; });
       var topPriorities = priorities.slice(0, 3);
       if (topPriorities.length === 0) {
-        topPriorities.push({ icon: 'target', name: 'Balanced Comfort', why: 'No specific issues — optimized for all-round sleep quality', badge: 'RECOMMENDED', fill: 70 });
+        topPriorities.push({ icon: 'target', name: es ? 'Comodidad Equilibrada' : 'Balanced Comfort', why: es ? 'Sin problemas específicos — optimizado para calidad de sueño general' : 'No specific issues — optimized for all-round sleep quality', badge: es ? 'RECOMENDADO' : 'RECOMMENDED', fill: 70 });
       }
       while (topPriorities.length < 3) {
-        topPriorities.push({ icon: 'comfort', name: 'Overall Comfort', why: 'Matched to your sleep profile', badge: 'RECOMMENDED', fill: 60 });
+        topPriorities.push({ icon: 'comfort', name: es ? 'Comodidad General' : 'Overall Comfort', why: es ? 'Adaptado a tu perfil de sueño' : 'Matched to your sleep profile', badge: es ? 'RECOMENDADO' : 'RECOMMENDED', fill: 60 });
       }
       
       document.getElementById('profileScores').innerHTML = topPriorities.map(function(p) {
@@ -4807,16 +4942,16 @@
       // is implicitly making based on what didn't land in the top 3.
       var topNames = topPriorities.map(function(p) { return p.name; });
       var nonPriorityMsg = '';
-      var hasCooling = topNames.indexOf('Temperature Regulation') > -1;
-      var hasSupport = topNames.indexOf('Spinal Support') > -1;
-      var hasPressure = topNames.indexOf('Pressure Relief') > -1;
-      var hasMotion = topNames.indexOf('Motion Isolation') > -1;
+      var hasCooling = topNames.indexOf(es ? 'Regulación de Temperatura' : 'Temperature Regulation') > -1;
+      var hasSupport = topNames.indexOf(es ? 'Soporte Espinal' : 'Spinal Support') > -1;
+      var hasPressure = topNames.indexOf(es ? 'Alivio de Presión' : 'Pressure Relief') > -1;
+      var hasMotion = topNames.indexOf(es ? 'Aislamiento de Movimiento' : 'Motion Isolation') > -1;
       if (!hasCooling && (temp === 'comfortable' || temp === 'cold')) {
-        nonPriorityMsg = 'Cooling is a lower priority for you — we\'re focused on feel and support.';
+        nonPriorityMsg = es ? 'El enfriamiento es menor prioridad para ti — nos enfocamos en sensación y soporte.' : 'Cooling is a lower priority for you — we\'re focused on feel and support.';
       } else if (!hasSupport && !hasPressure && !hasMotion && hasCooling) {
-        nonPriorityMsg = 'Temperature is your biggest need — feel and support come second.';
+        nonPriorityMsg = es ? 'La temperatura es tu mayor necesidad — sensación y soporte son secundarios.' : 'Temperature is your biggest need — feel and support come second.';
       } else if (!hasMotion && partnerSleep === 'solo') {
-        nonPriorityMsg = 'No partner, so we\'re not optimizing for motion isolation.';
+        nonPriorityMsg = es ? 'Sin pareja, así que no optimizamos para aislamiento de movimiento.' : 'No partner, so we\'re not optimizing for motion isolation.';
       }
       document.getElementById('profileNonPriority').textContent = nonPriorityMsg;
 
@@ -4825,8 +4960,8 @@
       var ctaBtn = document.getElementById('profileCtaBtn');
       var ctaText = document.getElementById('profileCtaText');
       if (ctaBtn && ctaText) {
-        var finalLabel = 'Show Me My Top 3 Picks →';
-        ctaText.textContent = 'Scoring mattresses against your profile…';
+        var finalLabel = es ? 'Muéstrame Mis 3 Mejores Opciones →' : 'Show Me My Top 3 Picks →';
+        ctaText.textContent = es ? 'Evaluando colchones según tu perfil…' : 'Scoring mattresses against your profile…';
         ctaBtn.classList.add('loading');
         setTimeout(function() {
           ctaBtn.classList.remove('loading');
@@ -4939,17 +5074,22 @@
 
       // Build "top pick why" one-liner from profile
       const topPickReasons = [];
-      if (temp === 'hot') topPickReasons.push('hot sleepers');
-      if (position === 'side') topPickReasons.push('side sleeping');
-      else if (position === 'back') topPickReasons.push('back sleeping');
-      else if (position === 'stomach') topPickReasons.push('stomach sleeping');
-      if (issues.includes('back_pain')) topPickReasons.push('back support');
-      if (issues.includes('partner')) topPickReasons.push('motion isolation');
-      if (firmness <= 3) topPickReasons.push('plush feel');
-      else if (firmness >= 7) topPickReasons.push('firm support');
-      const topPickWhy = topPickReasons.length > 0 
-        ? 'Best match for ' + topPickReasons.slice(0, 2).join(' & ')
-        : 'Highest overall match for your sleep profile';
+      const topPickReasonsEs = [];
+      if (temp === 'hot') { topPickReasons.push('hot sleepers'); topPickReasonsEs.push('durmientes calurosos'); }
+      if (position === 'side') { topPickReasons.push('side sleeping'); topPickReasonsEs.push('dormir de lado'); }
+      else if (position === 'back') { topPickReasons.push('back sleeping'); topPickReasonsEs.push('dormir boca arriba'); }
+      else if (position === 'stomach') { topPickReasons.push('stomach sleeping'); topPickReasonsEs.push('dormir boca abajo'); }
+      if (issues.includes('back_pain')) { topPickReasons.push('back support'); topPickReasonsEs.push('soporte lumbar'); }
+      if (issues.includes('partner')) { topPickReasons.push('motion isolation'); topPickReasonsEs.push('aislamiento de movimiento'); }
+      if (firmness <= 3) { topPickReasons.push('plush feel'); topPickReasonsEs.push('sensación suave'); }
+      else if (firmness >= 7) { topPickReasons.push('firm support'); topPickReasonsEs.push('soporte firme'); }
+      const topPickWhy = currentLang === 'es'
+        ? (topPickReasonsEs.length > 0
+            ? 'Mejor opción para ' + topPickReasonsEs.slice(0, 2).join(' y ')
+            : 'Mayor compatibilidad general con tu perfil de sueño')
+        : (topPickReasons.length > 0
+            ? 'Best match for ' + topPickReasons.slice(0, 2).join(' & ')
+            : 'Highest overall match for your sleep profile');
 
       // Find the TRUE top pick across all tiers
       let globalTopPick = null;
@@ -4974,7 +5114,7 @@
         const top3 = qualified.slice(0, 3);
 
         if (top3.length === 0) {
-          document.getElementById(tier + 'Content').innerHTML = '<div class="no-matches">No strong matches in this tier.</div>';
+          document.getElementById(tier + 'Content').innerHTML = '<div class="no-matches">' + (currentLang === 'es' ? 'No hay coincidencias fuertes en este nivel.' : 'No strong matches in this tier.') + '</div>';
           return;
         }
         
@@ -4989,28 +5129,29 @@
           var feats=[], pos=answers.sleep_position, tmp=answers.temperature;
           var iss=answers.sleep_issues||[], hlt=answers.health_conditions||[];
           var prtnr=answers.partner_sleep, firm=answers.firmness||5;
+          var es = currentLang === 'es';
           if(m.features.some(function(f){return f.includes('cooling')||f.includes('copper');})){
             var isCN=(tmp==='hot'||iss.includes('hot'));
-            feats.push({emoji:'&#10052;',name:'Cooling Technology',why:isCN?'You sleep hot - keeps you cool all night':'Regulates temperature for deeper sleep',matched:isCN});
+            feats.push({emoji:'&#10052;',name:es?'Tecnología de Enfriamiento':'Cooling Technology',why:isCN?(es?'Duermes caliente — te mantiene fresco toda la noche':'You sleep hot - keeps you cool all night'):(es?'Regula la temperatura para un sueño más profundo':'Regulates temperature for deeper sleep'),matched:isCN});
           }
           if(m.features.some(function(f){return f.includes('pressure')||f.includes('plush');})){
             var isPN=(pos==='side'||iss.includes('hip_pain')||iss.includes('stiff'));
-            feats.push({emoji:'&#127919;',name:'Pressure Relief',why:isPN?(pos==='side'?'Side sleepers need cushioning at hips and shoulders':'Eases your sore spots'):'Contours to your body',matched:isPN});
+            feats.push({emoji:'&#127919;',name:es?'Alivio de Presión':'Pressure Relief',why:isPN?(pos==='side'?(es?'Los que duermen de lado necesitan amortiguación en caderas y hombros':'Side sleepers need cushioning at hips and shoulders'):(es?'Alivia tus puntos de dolor':'Eases your sore spots')):(es?'Se adapta a tu cuerpo':'Contours to your body'),matched:isPN});
           }
           if(m.features.some(function(f){return f.includes('motion')||f.includes('hybrid');})){
             var isMN=(answers.partner_disturbance==='yes_often'||answers.partner_disturbance==='sometimes'||prtnr==='partner'||prtnr==='family');
-            feats.push({emoji:'&#127754;',name:'Motion Isolation',why:isMN?"Won't disturb your partner":'Pocketed coils absorb movement',matched:isMN});
+            feats.push({emoji:'&#127754;',name:es?'Aislamiento de Movimiento':'Motion Isolation',why:isMN?(es?'No molestará a tu pareja':"Won't disturb your partner"):(es?'Los resortes encapsulados absorben el movimiento':'Pocketed coils absorb movement'),matched:isMN});
           }
           if(m.features.some(function(f){return f.includes('support')||f.includes('back-supporter');})){
             var isSN=(iss.includes('back_pain')||hlt.includes('extra_support')||pos==='stomach');
-            feats.push({emoji:'&#128170;',name:'Back Support',why:isSN?(iss.includes('back_pain')?'Reinforced center zone for back pain':'Extra support where needed'):'Lumbar zone keeps spine aligned',matched:isSN});
+            feats.push({emoji:'&#128170;',name:es?'Soporte Espinal':'Back Support',why:isSN?(iss.includes('back_pain')?(es?'Zona central reforzada para dolor de espalda':'Reinforced center zone for back pain'):(es?'Soporte extra donde lo necesitas':'Extra support where needed')):(es?'La zona lumbar mantiene tu columna alineada':'Lumbar zone keeps spine aligned'),matched:isSN});
           }
-          if(m.firmness<=3&&firm<=3) feats.push({emoji:'&#9729;',name:'Plush Feel',why:'Matches your soft preference',matched:true});
-          else if(m.firmness>=7&&firm>=7) feats.push({emoji:'&#9899;',name:'Firm Feel',why:'Matches your firm preference',matched:true});
-          if(m.features.some(function(f){return f.includes('hand-tufting');})) feats.push({emoji:'&#127942;',name:'Lifetime Warranty',why:'Hand-tufted, built to last',matched:false});
+          if(m.firmness<=3&&firm<=3) feats.push({emoji:'&#9729;',name:es?'Sensación Suave':'Plush Feel',why:es?'Coincide con tu preferencia suave':'Matches your soft preference',matched:true});
+          else if(m.firmness>=7&&firm>=7) feats.push({emoji:'&#9899;',name:es?'Sensación Firme':'Firm Feel',why:es?'Coincide con tu preferencia firme':'Matches your firm preference',matched:true});
+          if(m.features.some(function(f){return f.includes('hand-tufting');})) feats.push({emoji:'&#127942;',name:es?'Garantía de por Vida':'Lifetime Warranty',why:es?'Acolchado a mano, hecho para durar':'Hand-tufted, built to last',matched:false});
           if(m.features.some(function(f){return f.includes('copper')||f.includes('anti-viral');})){
             var isAN=hlt.includes('allergies');
-            feats.push({emoji:'&#128310;',name:'Antimicrobial',why:isAN?'Resists dust mites':'Fresh sleep surface',matched:isAN});
+            feats.push({emoji:'&#128310;',name:es?'Antimicrobiano':'Antimicrobial',why:isAN?(es?'Resiste los ácaros del polvo':'Resists dust mites'):(es?'Superficie de sueño fresca':'Fresh sleep surface'),matched:isAN});
           }
           feats.sort(function(a,b){return (b.matched?1:0)-(a.matched?1:0);});
           return feats;
@@ -5020,7 +5161,7 @@
         window._drawerData = window._drawerData || {};
         top3.forEach(function(m){
           var pct=Math.round((scores[m.id]/maxScore)*100);
-          var ff=m.firmness<=3?'Plush':m.firmness<=5?'Medium':m.firmness<=7?'Firm':'Extra Firm';
+          var ff=currentLang==='es'?(m.firmness<=3?'Suave':m.firmness<=5?'Medio':m.firmness<=7?'Firme':'Extra Firme'):(m.firmness<=3?'Plush':m.firmness<=5?'Medium':m.firmness<=7?'Firm':'Extra Firm');
           window._drawerData[m.id]={m:m,tier:tier,pct:pct,feats:buildFeats(m),firmFeel:ff};
         });
 
@@ -5029,17 +5170,22 @@
           const isTopPick = m.id === globalTopPick;
           const feats = buildFeats(m);
           const topChips = feats.slice(0, 3);
-          const firmFeel = m.firmness<=3?'Plush':m.firmness<=5?'Medium':m.firmness<=7?'Firm':'Extra Firm';
+          const firmFeel = currentLang==='es'?(m.firmness<=3?'Suave':m.firmness<=5?'Medio':m.firmness<=7?'Firme':'Extra Firme'):(m.firmness<=3?'Plush':m.firmness<=5?'Medium':m.firmness<=7?'Firm':'Extra Firm');
+          const _needBadge = currentLang === 'es' ? 'TU NECESIDAD' : 'YOUR NEED';
           const chipHtml = topChips.map(f =>
             '<div class="card-feat-chip'+(f.matched?' chip-matched':'')+'">'+
             '<span class="card-feat-chip-icon">'+f.emoji+'</span>'+f.name+
-            (f.matched?'<span class="card-feat-chip-badge">YOUR NEED</span>':'')+
+            (f.matched?'<span class="card-feat-chip-badge">'+_needBadge+'</span>':'')+
             '</div>'
           ).join('');
+          const _topPickLabel = currentLang === 'es' ? 'Mejor Opción Para Ti' : 'Top Pick For You';
+          const _compareLabel = currentLang === 'es' ? '+ Comparar' : '+ Compare';
+          const _tapHint = currentLang === 'es' ? '👆 Toca para ver más' : '👆 Tap to learn more';
+          const _matchLabel = currentLang === 'es' ? 'Compatibilidad' : 'Match';
           return `
             <div class="mattress-card" data-id="${m.id}" data-tier="${tier}" style="touch-action:manipulation; cursor:pointer;">
-              <button class="compare-btn ${(window._compareSelected || []).indexOf(m.id) > -1 ? 'selected' : ''}" data-id="${m.id}">+ Compare</button>
-              ${isTopPick?`<div class="top-pick-badge"><div class="top-pick-icon">${icon('target',28)}</div><div><div class="top-pick-label">Top Pick For You</div><div class="top-pick-why">${topPickWhy}</div></div></div>`:''}
+              <button class="compare-btn ${(window._compareSelected || []).indexOf(m.id) > -1 ? 'selected' : ''}" data-id="${m.id}">${_compareLabel}</button>
+              ${isTopPick?`<div class="top-pick-badge"><div class="top-pick-icon">${icon('target',28)}</div><div><div class="top-pick-label">${_topPickLabel}</div><div class="top-pick-why">${topPickWhy}</div></div></div>`:''}
               ${m.imageUrl?`<div class="card-image"><img src="${m.imageUrl}" alt="${m.name}"></div>`:''}
               <div class="card-header">
                 <div>
@@ -5057,7 +5203,7 @@
                 <div class="card-stock-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5.5l2 2 4-4" stroke="#66bb6a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                 <span class="card-stock-text">${(STORE_CONFIG.text && STORE_CONFIG.text.inStockText) || "In Stock at The Furniture Market"}</span>
               </div>
-              <div class="card-tap-hint">👆 Tap to learn more</div>
+              <div class="card-tap-hint">${_tapHint}</div>
             </div>`;
         }).join('')}</div>`;
 
@@ -5288,12 +5434,13 @@
       const topPick = analytics.topPick;
       
       const preview = document.getElementById('emailPreview');
+      var _esE = currentLang === 'es';
       preview.innerHTML = `
-        <div class="email-preview-label">Your Personalized Report Includes</div>
-        <div class="email-preview-item"><span>${icon('moon', 14)}</span> Sleep profile: <strong style="color:var(--cream);margin-left:0.2rem;">${emailProfileName}</strong></div>
-        <div class="email-preview-item"><span>${icon('target', 14)}</span> Top mattress match${topPick ? ': <strong style="color:var(--cream);margin-left:0.2rem;">' + topPick.name + '</strong> (' + topPick.matchPct + '%)' : ' & scores'}</div>
-        <div class="email-preview-item"><span>${icon('support', 14)}</span> Priority breakdown & why each mattress fits you</div>
-        <div class="email-preview-item"><span>${icon('cloud', 14)}</span> Recommended accessories for your sleep style</div>
+        <div class="email-preview-label">${_esE ? 'Tu Reporte Personalizado Incluye' : 'Your Personalized Report Includes'}</div>
+        <div class="email-preview-item"><span>${icon('moon', 14)}</span> ${_esE ? 'Perfil de sueño' : 'Sleep profile'}: <strong style="color:var(--cream);margin-left:0.2rem;">${emailProfileName}</strong></div>
+        <div class="email-preview-item"><span>${icon('target', 14)}</span> ${_esE ? 'Mejor colchón' : 'Top mattress match'}${topPick ? ': <strong style="color:var(--cream);margin-left:0.2rem;">' + topPick.name + '</strong> (' + topPick.matchPct + '%)' : (_esE ? ' y puntuaciones' : ' & scores')}</div>
+        <div class="email-preview-item"><span>${icon('support', 14)}</span> ${_esE ? 'Desglose de prioridades y por qué cada colchón te conviene' : 'Priority breakdown & why each mattress fits you'}</div>
+        <div class="email-preview-item"><span>${icon('cloud', 14)}</span> ${_esE ? 'Accesorios recomendados para tu estilo de sueño' : 'Recommended accessories for your sleep style'}</div>
       `;
       
       // Reset form state
@@ -5301,7 +5448,7 @@
       document.getElementById('emailInput').value = '';
       document.getElementById('emailPhoneInput').value = '';
       document.getElementById('emailError').textContent = '';
-      document.getElementById('emailSendBtn').textContent = 'Send My Results';
+      document.getElementById('emailSendBtn').textContent = currentLang === 'es' ? 'Enviar Mis Resultados' : 'Send My Results';
       document.getElementById('emailSendBtn').className = 'email-send-btn';
       document.getElementById('emailSendBtn').style.display = '';
       document.getElementById('emailConfirmation').className = 'email-sent-confirmation';
@@ -5332,7 +5479,7 @@
     
     // ===== EMAIL CONFIG =====
     // Paste your Google Apps Script URL here after deploying:
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw7hdXNIHiSBm3drOPw6vJYRnutXdMWQntIbiWZCjRAHxi-4N2jsn85TGKycvvNNA/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw7hdXNIHiSBm3drOPw6vJYRnutXdMWQntIbiWZCjRAHxi-4N2jsn85TGKycvvNNA/exec';  // e.g. 'https://script.google.com/macros/s/AKfyc.../exec'
 
     window.sendResults = function() {
       const emailInput = document.getElementById('emailInput');
@@ -5347,18 +5494,18 @@
       
       // Validate
       if (!email) {
-        errorEl.textContent = 'Please enter your email address.';
+        errorEl.textContent = currentLang === 'es' ? 'Por favor ingresa tu correo electrónico.' : 'Please enter your email address.';
         emailInput.focus();
         return;
       }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.textContent = currentLang === 'es' ? 'Por favor ingresa un correo electrónico válido.' : 'Please enter a valid email address.';
         emailInput.focus();
         return;
       }
       
       errorEl.textContent = '';
-      sendBtn.textContent = 'Sending...';
+      sendBtn.textContent = currentLang === 'es' ? 'Enviando...' : 'Sending...';
       sendBtn.classList.add('sending');
       
       // Use stored profile name
@@ -5369,7 +5516,7 @@
       // Email clients (Gmail etc.) can't resolve relative image paths, so
       // convert any relative URLs (e.g. "images/mattresses/caitlin.png")
       // into absolute URLs rooted at the GitHub Pages deployment.
-      const PUBLIC_ASSET_ROOT = 'https://beford782.github.io/TheFurnitureMarket/';
+      const PUBLIC_ASSET_ROOT = 'https://beford782.github.io/DreamFinder/';
       function toAbsoluteImageUrl(u) {
         if (!u) return '';
         if (/^https?:\/\//i.test(u) || u.startsWith('//')) return u;
@@ -5401,47 +5548,63 @@
       // When customer saved picks, show all of them (they explicitly chose these).
       // When falling back to recommendations, cap at top 3 to keep the email concise.
       const topMatches = saved.length > 0 ? allMatches.slice(0, 6) : allMatches.slice(0, 3);
+      const _es = currentLang === 'es';
+      const _storeTextBlock = (_es && STORE_CONFIG.text_es) ? STORE_CONFIG.text_es : STORE_CONFIG.text;
+      const _emailHeader = (_storeTextBlock && _storeTextBlock.emailHeader) || "The Furniture Market × DreamFinder";
+      const _emailSubtext = (_storeTextBlock && _storeTextBlock.emailSubtext) || (_es ? "Lleva este correo a The Furniture Market" : "Bring this email to The Furniture Market");
+      const _eTitle = _es ? `Tus Combinaciones Perfectas, ${firstName}` : `Your Perfect Matches, ${firstName}`;
+      const _eSubtitle = _es ? 'Basado en tu perfil de sueño personalizado' : 'Based on your personalized sleep profile';
+      const _eDiscount = _es ? `&#127991; ${STORE_DISCOUNT}% DE DESCUENTO &mdash; ¡Tu Descuento Está Listo!` : `&#127991; ${STORE_DISCOUNT}% OFF &mdash; Your Discount Is Ready!`;
+      const _eShowCode = _es ? 'Muestra este correo a tu especialista de sueño hoy' : 'Show this email to your sleep specialist today';
+      const _eCodeLabel = _es ? 'Tu Código de Descuento' : 'Your Discount Code';
+      const _eCodeRedeem = _es ? `Presenta este código para canjear tu ${STORE_DISCOUNT}% de descuento` : `Present this code to redeem your ${STORE_DISCOUNT}% off`;
+      const _eProfileLabel = _es ? 'Tu Perfil de Sueño' : 'Your Sleep Profile';
+      const _eMatchesLabel = _es ? 'Tus Mejores Opciones de Colchón' : 'Your Top Mattress Matches';
+      const _eTopPick = _es ? 'Mejor Opción' : 'Top Pick';
+      const _eMatch = _es ? 'Compatibilidad' : 'Match';
+      const _eAccLabel = _es ? 'Accesorios Recomendados' : 'Recommended Accessories';
+      const _eDiscountWaiting = _es ? `Tu ${STORE_DISCOUNT}% de descuento te está esperando` : `Your ${STORE_DISCOUNT}% discount is waiting for you`;
       const emailHtml = `<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="margin:0;padding:0;background:#f4f4f4;font-family:Arial,sans-serif;">
 <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:20px 0;"><tr><td align="center">
 <table width="600" cellpadding="0" cellspacing="0" style="background:#0d1730;border-radius:12px;overflow:hidden;max-width:600px;">
   <tr><td style="background:linear-gradient(135deg,#1a2744,#0d1730);padding:32px 32px 24px;text-align:center;border-bottom:2px solid #c9a84c;">
-    <div style="font-size:11px;letter-spacing:3px;color:#c9a84c;text-transform:uppercase;margin-bottom:8px;">${(STORE_CONFIG.text && STORE_CONFIG.text.emailHeader) || "The Furniture Market × DreamFinder"}</div>
-    <div style="font-size:24px;font-weight:700;color:#ffffff;margin-bottom:6px;">Your Perfect Matches, ${firstName}</div>
-    <div style="font-size:13px;color:#a0b0c8;">Based on your personalized sleep profile</div>
+    <div style="font-size:11px;letter-spacing:3px;color:#c9a84c;text-transform:uppercase;margin-bottom:8px;">${_emailHeader}</div>
+    <div style="font-size:24px;font-weight:700;color:#ffffff;margin-bottom:6px;">${_eTitle}</div>
+    <div style="font-size:13px;color:#a0b0c8;">${_eSubtitle}</div>
   </td></tr>
   <tr><td style="background:linear-gradient(135deg,#c9a84c,#a8893d);padding:14px 32px;text-align:center;">
-    <span style="font-size:17px;font-weight:700;color:#0d1730;">&#127991; ${STORE_DISCOUNT}% OFF &mdash; Your Discount Is Ready!</span><br>
-    <span style="font-size:12px;color:#0d1730;">Show this email to your sleep specialist today</span>
+    <span style="font-size:17px;font-weight:700;color:#0d1730;">${_eDiscount}</span><br>
+    <span style="font-size:12px;color:#0d1730;">${_eShowCode}</span>
   </td></tr>
   <tr><td style="padding:16px 32px 8px; text-align:center;">
     <div style="display:inline-block; border:2px dashed #c9a84c; border-radius:12px; padding:12px 28px; background:rgba(201,168,76,0.08);">
-      <div style="font-size:10px;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-bottom:6px;">Your Discount Code</div>
+      <div style="font-size:10px;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-bottom:6px;">${_eCodeLabel}</div>
       <div style="font-size:26px;font-weight:800;letter-spacing:0.12em;color:#ffffff;font-family:monospace;">${generateDreamCode(analytics.sessionId)}</div>
-      <div style="font-size:11px;color:#a0b0c8;margin-top:4px;">Present this code to redeem your ${STORE_DISCOUNT}% off</div>
+      <div style="font-size:11px;color:#a0b0c8;margin-top:4px;">${_eCodeRedeem}</div>
     </div>
   </td></tr>
   <tr><td style="padding:24px 32px 8px;">
-    <div style="font-size:10px;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-bottom:6px;">Your Sleep Profile</div>
+    <div style="font-size:10px;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-bottom:6px;">${_eProfileLabel}</div>
     <div style="font-size:14px;color:#ffffff;font-weight:600;">${profName}</div>
   </td></tr>
   <tr><td style="padding:16px 32px 8px;">
-    <div style="font-size:10px;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-bottom:14px;">Your Top Mattress Matches</div>
+    <div style="font-size:10px;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-bottom:14px;">${_eMatchesLabel}</div>
     ${topMatches.map((m, i) => `
     <table width="100%" cellpadding="0" cellspacing="0" style="background:${i===0?'#1d3352':'rgba(255,255,255,0.04)'};border:${i===0?'1.5px solid #c9a84c':'1px solid rgba(255,255,255,0.08)'};border-radius:10px;overflow:hidden;margin-bottom:10px;">
       <tr>
         ${m.imageUrl ? `<td width="90" style="vertical-align:top;padding:0;"><img src="${m.imageUrl}" width="90" height="80" alt="${m.name}" style="display:block;object-fit:cover;"></td>` : ''}
         <td style="padding:12px 14px;vertical-align:middle;">
-          ${i===0 ? '<div style="font-size:9px;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-bottom:3px;">&#11088; Top Pick</div>' : ''}
+          ${i===0 ? `<div style="font-size:9px;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-bottom:3px;">&#11088; ${_eTopPick}</div>` : ''}
           <div style="font-size:15px;font-weight:700;color:#ffffff;">${m.name}</div>
           <div style="font-size:11px;color:#a0b0c8;margin-top:2px;">${m.brand}</div>
-          <div style="font-size:12px;color:#c9a84c;margin-top:4px;font-weight:600;">${m.matchPct}% Match</div>
+          <div style="font-size:12px;color:#c9a84c;margin-top:4px;font-weight:600;">${m.matchPct}% ${_eMatch}</div>
         </td>
       </tr>
     </table>`).join('')}
   </td></tr>
   ${accList.length > 0 ? `
   <tr><td style="padding:8px 32px 16px;">
-    <div style="font-size:10px;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-bottom:14px;">Recommended Accessories</div>
+    <div style="font-size:10px;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-bottom:14px;">${_eAccLabel}</div>
     <table width="100%" cellpadding="0" cellspacing="0"><tr>
       ${accList.slice(0,3).map(a => `<td style="width:${Math.floor(100/Math.min(accList.length,3))}%;padding:0 4px;vertical-align:top;text-align:center;">
         <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;overflow:hidden;">
@@ -5453,8 +5616,8 @@
     </tr></table>
   </td></tr>` : ''}
   <tr><td style="padding:20px 32px 28px;text-align:center;border-top:1px solid rgba(255,255,255,0.08);">
-    <div style="font-size:13px;color:#a0b0c8;margin-bottom:4px;">${(STORE_CONFIG.text && STORE_CONFIG.text.emailSubtext) || "Bring this email to The Furniture Market in Texarkana"}</div>
-    <div style="font-size:13px;color:#c9a84c;font-weight:700;">Your ${STORE_DISCOUNT}% discount is waiting for you</div>
+    <div style="font-size:13px;color:#a0b0c8;margin-bottom:4px;">${_emailSubtext}</div>
+    <div style="font-size:13px;color:#c9a84c;font-weight:700;">${_eDiscountWaiting}</div>
     <div style="margin-top:16px;font-size:10px;color:#4a5a6a;">Session: ${analytics.sessionId}</div>
   </td></tr>
 </table></td></tr></table></body></html>`;
@@ -5471,6 +5634,7 @@
         discount: STORE_DISCOUNT,
         dreamCode: generateDreamCode(analytics.sessionId),
         sessionId: analytics.sessionId,
+        lang: currentLang,
         allMatches: allMatches,
         accessories: accList,
         htmlBody: emailHtml
@@ -5479,7 +5643,7 @@
       analytics.log('email_submitted', { email: email, name: name, phone: phone });
       
       function showSuccess() {
-        sendBtn.textContent = '✓ Sent!';
+        sendBtn.textContent = currentLang === 'es' ? '✓ ¡Enviado!' : '✓ Sent!';
         sendBtn.classList.remove('sending');
         sendBtn.classList.add('sent');
         confirmation.classList.add('visible');
@@ -5491,9 +5655,9 @@
       }
       
       function showError(msg) {
-        sendBtn.textContent = 'Send My Results';
+        sendBtn.textContent = currentLang === 'es' ? 'Enviar Mis Resultados' : 'Send My Results';
         sendBtn.classList.remove('sending');
-        errorEl.textContent = msg || 'Something went wrong. Please try again.';
+        errorEl.textContent = msg || (currentLang === 'es' ? 'Algo salió mal. Por favor intenta de nuevo.' : 'Something went wrong. Please try again.');
       }
       
       if (GOOGLE_SCRIPT_URL) {
@@ -5515,12 +5679,12 @@
           } else {
             var msg = (data && data.error) ? data.error : 'Email could not be sent.';
             console.error('[DreamFinder] GAS returned failure:', msg);
-            showError('We couldn\'t send your email — please ask your sales specialist to re-send it.');
+            showError(currentLang === 'es' ? 'No pudimos enviar tu correo — por favor pide a tu especialista de sueño que lo reenvíe.' : 'We couldn\'t send your email — please ask your sales specialist to re-send it.');
           }
         })
         .catch(function(err) {
           console.error('[DreamFinder] Email error:', err);
-          showError('Network error. Please try again.');
+          showError(currentLang === 'es' ? 'Error de red. Por favor intenta de nuevo.' : 'Network error. Please try again.');
         });
       } else {
         // Simulated send (no Google Script URL configured)
@@ -5540,17 +5704,18 @@
       var profileSub = analytics.profileSubtitle || 'Sleeper';
       
       // Reason mapping
+      var _es = currentLang === 'es';
       const reasonMap = {
-        'position_side': 'Matched to your side sleeping position',
-        'position_back': 'Optimized for back sleepers',
-        'position_stomach': 'Designed for stomach sleepers',
-        'cooling': 'You reported sleeping hot',
-        'hot': 'Addresses your temperature concerns',
-        'back_pain': 'Targets the back pain you mentioned',
-        'snoring': 'Helps with the snoring you reported',
-        'allergies': 'Protects against the allergies you noted',
-        'premium': 'Matches your comfort preferences',
-        'default': 'Recommended for your sleep profile'
+        'position_side': _es ? 'Adaptado a tu posición de dormir de lado' : 'Matched to your side sleeping position',
+        'position_back': _es ? 'Optimizado para los que duermen boca arriba' : 'Optimized for back sleepers',
+        'position_stomach': _es ? 'Diseñado para los que duermen boca abajo' : 'Designed for stomach sleepers',
+        'cooling': _es ? 'Reportaste dormir caliente' : 'You reported sleeping hot',
+        'hot': _es ? 'Aborda tus preocupaciones de temperatura' : 'Addresses your temperature concerns',
+        'back_pain': _es ? 'Se enfoca en el dolor de espalda que mencionaste' : 'Targets the back pain you mentioned',
+        'snoring': _es ? 'Ayuda con los ronquidos que reportaste' : 'Helps with the snoring you reported',
+        'allergies': _es ? 'Protege contra las alergias que mencionaste' : 'Protects against the allergies you noted',
+        'premium': _es ? 'Coincide con tus preferencias de comodidad' : 'Matches your comfort preferences',
+        'default': _es ? 'Recomendado para tu perfil de sueño' : 'Recommended for your sleep profile'
       };
       
       // Score accessories
@@ -5570,17 +5735,18 @@
       accessoryData.sort((a, b) => b.score - a.score);
       // Bases: show all types in order (adjustable, foundation, low profile, bunkie)
       const baseOrder = ['adjustable', 'foundation', 'low_profile', 'bunkie'];
-      const bases = accessoryData.filter(a => a.category === 'Foundations & Support')
+      const _catEn = function(a) { return typeof a.category === 'object' ? a.category.en : a.category; };
+      const bases = accessoryData.filter(a => _catEn(a) === 'Foundations & Support')
         .sort((a, b) => baseOrder.indexOf(a.subType) - baseOrder.indexOf(b.subType));
-      const pillows = accessoryData.filter(a => a.category === 'Pillows').slice(0, 3);
-      const protectors = accessoryData.filter(a => a.category === 'Protectors').slice(0, 2);
+      const pillows = accessoryData.filter(a => _catEn(a) === 'Pillows').slice(0, 3);
+      const protectors = accessoryData.filter(a => _catEn(a) === 'Protectors').slice(0, 2);
       const toShow = [...bases, ...pillows, ...protectors];
       const maxScore = Math.max(...toShow.map(a => a.score), 1);
       
-      // Store accessory recommendations for email
+      // Store accessory recommendations for email (always English for analytics)
       analytics.recommendedAccessories = [...pillows, ...protectors].map(a => ({
-        name: a.name,
-        category: a.category,
+        name: typeof a.name === 'object' ? a.name.en : a.name,
+        category: typeof a.category === 'object' ? a.category.en : a.category,
         imageUrl: a.image || '',
         score: Math.min(Math.round((a.score / maxScore) * 100), 99)
       }));
@@ -5612,16 +5778,19 @@
       
       // Store grouped data for stepped reveal
       const categoryIcons = { 'Foundations & Support': icon('support', 20), 'Pillows': icon('cloud', 20), 'Protectors': icon('check', 20) };
-      const categorySubtitles = { 
-        'Foundations & Support': 'Every mattress needs the right foundation', 
-        'Pillows': 'Matched to your sleep position & temperature',
-        'Protectors': 'Extend mattress life & improve sleep quality'
+      const categorySubtitles = {
+        'Foundations & Support': _es ? 'Cada colchón necesita la base correcta' : 'Every mattress needs the right foundation',
+        'Pillows': _es ? 'Adaptadas a tu posición de sueño y temperatura' : 'Matched to your sleep position & temperature',
+        'Protectors': _es ? 'Extiende la vida del colchón y mejora la calidad de sueño' : 'Extend mattress life & improve sleep quality'
       };
-      const nextLabels = { 'Foundations & Support': 'Next: Pillows →', 'Pillows': 'Next: Mattress Protectors →' };
-      
+      const nextLabels = {
+        'Foundations & Support': _es ? 'Siguiente: Almohadas →' : 'Next: Pillows →',
+        'Pillows': _es ? 'Siguiente: Protectores de Colchón →' : 'Next: Mattress Protectors →'
+      };
+
       const grouped = ['Foundations & Support', 'Pillows', 'Protectors'].map(cat => ({
         category: cat,
-        items: toShow.filter(a => a.category === cat)
+        items: toShow.filter(a => _catEn(a) === cat)
       })).filter(g => g.items.length > 0);
       
       // Track which step we're on
@@ -5635,31 +5804,39 @@
         const oldBtn = document.getElementById('accNextBtn');
         if (oldBtn) { oldBtn.style.opacity = '0'; setTimeout(() => oldBtn.remove(), 300); }
         
-        // Add section header
+        // Add section header — g.category is the English key; translate for display
+        var _catDisplayNames = {'Foundations & Support': _es ? 'Bases y Soportes' : 'Foundations & Support', 'Pillows': _es ? 'Almohadas' : 'Pillows', 'Protectors': _es ? 'Protectores' : 'Protectors'};
         const headerHtml = `
           <div class="acc-section-header acc-card-animated">
             <span class="acc-section-icon">${categoryIcons[g.category] || '📦'}</span>
             <div>
-              <div class="acc-section-title">${g.category}</div>
+              <div class="acc-section-title">${_catDisplayNames[g.category] || g.category}</div>
               <div class="acc-section-sub">${categorySubtitles[g.category] || ''}</div>
             </div>
           </div>`;
         grid.insertAdjacentHTML('beforeend', headerHtml);
-        
+
+        var _matchWord = _es ? 'Compatibilidad' : 'Match';
         // Stagger cards in
         g.items.forEach((a, i) => {
           const matchPct = Math.min(Math.round((a.score / maxScore) * 100), 99);
           const isRec = a.score >= 3;
+          const _aName = L(a.name);
+          const _aCat = L(a.category);
+          const _aDesc = L(a.description);
+          // For _toggleAcc, pass English name/category for analytics
+          const _aNameEn = typeof a.name === 'object' ? a.name.en : a.name;
+          const _aCatEn = typeof a.category === 'object' ? a.category.en : a.category;
           const cardHtml = `
-            <div class="accessory-card acc-card-animated ${isRec ? 'recommended' : ''}" id="acc-${a.id}" onclick="window._toggleAcc('${a.id}','${a.name}','${a.category}')">
+            <div class="accessory-card acc-card-animated ${isRec ? 'recommended' : ''}" id="acc-${a.id}" onclick="window._toggleAcc('${a.id}','${_aNameEn.replace(/'/g,"\\'")}','${_aCatEn.replace(/'/g,"\\'")}')">
               <div class="accessory-image">
-                <img src="${a.image}" alt="${a.name}" style="width:100%;height:100%;object-fit:cover;">
-                ${isRec ? `<span class="accessory-match">${matchPct}% Match</span>` : ''}
+                <img src="${a.image}" alt="${_aName}" style="width:100%;height:100%;object-fit:cover;">
+                ${isRec ? `<span class="accessory-match">${matchPct}% ${_matchWord}</span>` : ''}
               </div>
               <div id="acc-check-${a.id}" style="display:none; position:absolute; top:0.5rem; right:0.5rem; background:var(--gold); border-radius:50%; width:26px; height:26px; align-items:center; justify-content:center; font-size:0.85rem; box-shadow:0 2px 8px rgba(0,0,0,0.4); animation:optBounce 0.3s ease;">✓</div>
-              <div class="accessory-category">${a.category}</div>
-              <div class="accessory-name">${a.name}</div>
-              <div class="accessory-description">${a.description}</div>
+              <div class="accessory-category">${_aCat}</div>
+              <div class="accessory-name">${_aName}</div>
+              <div class="accessory-description">${_aDesc}</div>
               <div style="font-size:0.65rem; color:var(--gold); margin-top:0.4rem; font-style:italic; line-height:1.3;">${a.reasons[0]}</div>
             </div>`;
           setTimeout(() => grid.insertAdjacentHTML('beforeend', cardHtml), (i + 1) * 200);
@@ -5674,7 +5851,7 @@
             const btnHtml = `
               <div id="accNextBtn" class="acc-next-wrapper acc-card-animated" style="grid-column:1/-1;">
                 <button class="acc-next-btn" onclick="window._accNext()">
-                  ${nextIcon} ${nextLabels[g.category] || 'Continue →'}
+                  ${nextIcon} ${nextLabels[g.category] || (_es ? 'Continuar →' : 'Continue →')}
                 </button>
               </div>`;
             grid.insertAdjacentHTML('beforeend', btnHtml);
@@ -5702,11 +5879,11 @@
       
       // SEQUENCE: Staggered reveal
       const discountEl = document.getElementById('accDiscountText');
-      if (discountEl) discountEl.textContent = `Your ${STORE_DISCOUNT}% discount applies to everything on this page`;
+      if (discountEl) discountEl.textContent = _es ? `Tu ${STORE_DISCOUNT}% de descuento aplica a todo en esta página` : `Your ${STORE_DISCOUNT}% discount applies to everything on this page`;
       setTimeout(() => { header.style.opacity = '1'; header.style.transform = 'translateY(0)'; }, 100);
       setTimeout(() => { badge.style.opacity = '1'; badge.style.transform = 'scale(1)'; }, 300);
       setTimeout(() => { analyzing.style.opacity = '1'; }, 500);
-      setTimeout(() => { status.textContent = 'Matching accessories to your profile...'; }, 1000);
+      setTimeout(() => { status.textContent = _es ? 'Combinando accesorios con tu perfil...' : 'Matching accessories to your profile...'; }, 1000);
       
       // After analyzing, show first category
       setTimeout(() => {
@@ -5759,7 +5936,7 @@
       // Update button state
       var btn = document.getElementById('drawerInterestedBtn');
       if (btn) {
-        btn.textContent = '✓ Saved!';
+        btn.textContent = currentLang === 'es' ? '✓ ¡Guardado!' : '✓ Saved!';
         btn.style.background = 'linear-gradient(180deg,#6ec79a,#4caf6e)';
       }
       // Update picks badge
@@ -5865,16 +6042,24 @@
 
     // Salesperson context labels (S6)
     const TRIGGER_LABELS = {
-      pain: 'Back or Body Pain',
-      worn_out: 'Old Mattress',
-      moving: 'Moving or New Space',
-      upgrade: 'Just Upgrading',
-      browsing: 'Just Looking'
+      pain: {en: 'Back or Body Pain', es: 'Dolor de Espalda o Cuerpo'},
+      worn_out: {en: 'Old Mattress', es: 'Colchón Viejo'},
+      moving: {en: 'Moving or New Space', es: 'Mudanza'},
+      upgrade: {en: 'Just Upgrading', es: 'Mejorando'},
+      browsing: {en: 'Just Looking', es: 'Solo Mirando'}
     };
-    const QUALITY_LABELS = { poor: 'Poorly', fair: 'Not Great', okay: 'Okay', well: 'Pretty Well' };
+    const QUALITY_LABELS = {
+      poor: {en: 'Poorly', es: 'Mal'},
+      fair: {en: 'Not Great', es: 'No Muy Bien'},
+      okay: {en: 'Okay', es: 'Más o Menos'},
+      well: {en: 'Pretty Well', es: 'Bastante Bien'}
+    };
     const AGE_LABELS = {
-      under_2: '< 2 yrs', three_seven: '3–7 yrs', eight_fifteen: '8–15 yrs',
-      fifteen_plus: '15+ yrs', not_sure: 'Not sure'
+      under_2: {en: '< 2 yrs', es: '< 2 años'},
+      three_seven: {en: '3–7 yrs', es: '3–7 años'},
+      eight_fifteen: {en: '8–15 yrs', es: '8–15 años'},
+      fifteen_plus: {en: '15+ yrs', es: '15+ años'},
+      not_sure: {en: 'Not sure', es: 'No sé'}
     };
     const SIZE_LABELS_SHORT = {
       twin: 'Twin', twin_xl: 'Twin XL', full: 'Full', queen: 'Queen', king: 'King', cal_king: 'Cal King'
@@ -5883,27 +6068,38 @@
     function renderCustomerContextCard() {
       var el = document.getElementById('customerContextCard');
       if (!el) return;
+      var _esC = currentLang === 'es';
       var profile = analytics.profileName ? (analytics.profileName + ' · ' + (analytics.profileSubtitle || '')) : '';
-      var triggerLbl = TRIGGER_LABELS[answers.trigger] || '';
-      var qualityLbl = QUALITY_LABELS[answers.sleep_quality] || '';
-      var ageLbl = AGE_LABELS[answers.current_mattress_age] || '';
+      var triggerLbl = TRIGGER_LABELS[answers.trigger] ? L(TRIGGER_LABELS[answers.trigger]) : '';
+      var qualityLbl = QUALITY_LABELS[answers.sleep_quality] ? L(QUALITY_LABELS[answers.sleep_quality]) : '';
+      var ageLbl = AGE_LABELS[answers.current_mattress_age] ? L(AGE_LABELS[answers.current_mattress_age]) : '';
       var sizeLbl = SIZE_LABELS_SHORT[answers.mattress_size] || '';
       var firmness = answers.firmness || 5;
-      var firmLbl = firmness <= 3 ? 'Plush' : firmness >= 7 ? 'Firm' : 'Medium';
-      var tempLbl = answers.temperature === 'hot' ? 'Hot' : answers.temperature === 'cold' ? 'Cold' :
-                    answers.temperature === 'opposite' ? 'Mixed' : 'Comfortable';
-      var partnerLbl = answers.partner_sleep === 'partner' ? 'Shared bed' :
-                       answers.partner_sleep === 'family' ? 'Family bed' : 'Solo';
+      var firmLbl = _esC
+        ? (firmness <= 3 ? 'Suave' : firmness >= 7 ? 'Firme' : 'Medio')
+        : (firmness <= 3 ? 'Plush' : firmness >= 7 ? 'Firm' : 'Medium');
+      var tempLbl = _esC
+        ? (answers.temperature === 'hot' ? 'Caliente' : answers.temperature === 'cold' ? 'Frío' :
+           answers.temperature === 'opposite' ? 'Mixto' : 'Cómodo')
+        : (answers.temperature === 'hot' ? 'Hot' : answers.temperature === 'cold' ? 'Cold' :
+           answers.temperature === 'opposite' ? 'Mixed' : 'Comfortable');
+      var partnerLbl = _esC
+        ? (answers.partner_sleep === 'partner' ? 'Cama compartida' :
+           answers.partner_sleep === 'family' ? 'Cama familiar' : 'Solo')
+        : (answers.partner_sleep === 'partner' ? 'Shared bed' :
+           answers.partner_sleep === 'family' ? 'Family bed' : 'Solo');
       var issues = (answers.sleep_issues || []).filter(function(x){ return x !== 'none'; });
-      var issuesLbl = issues.length ? issues.length + ' issue' + (issues.length>1?'s':'') : 'No issues';
+      var issuesLbl = _esC
+        ? (issues.length ? issues.length + ' problema' + (issues.length>1?'s':'') : 'Sin problemas')
+        : (issues.length ? issues.length + ' issue' + (issues.length>1?'s':'') : 'No issues');
 
       var pills = [];
       if (sizeLbl) pills.push(sizeLbl);
-      pills.push(firmLbl + ' feel');
-      if (tempLbl !== 'Comfortable') pills.push(tempLbl + ' sleeper');
+      pills.push(firmLbl + (_esC ? '' : ' feel'));
+      if ((_esC ? 'Cómodo' : 'Comfortable') !== tempLbl) pills.push(tempLbl + (_esC ? '' : ' sleeper'));
       pills.push(partnerLbl);
-      if (ageLbl) pills.push('Mattress ' + ageLbl);
-      if (qualityLbl) pills.push('Sleeps ' + qualityLbl);
+      if (ageLbl) pills.push((_esC ? 'Colchón ' : 'Mattress ') + ageLbl);
+      if (qualityLbl) pills.push((_esC ? 'Duerme ' : 'Sleeps ') + qualityLbl);
       pills.push(issuesLbl);
 
       // Sales cheat sheet for this profile archetype
@@ -5912,7 +6108,7 @@
       if (notes) {
         notesHtml =
           '<div style="margin-top:0.75rem; padding-top:0.75rem; border-top:1px dashed rgba(212,168,75,0.3);">'
-          + '<div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:1.8px; color:var(--gold); font-weight:700; margin-bottom:0.5rem;">Sales Cheat Sheet</div>'
+          + '<div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:1.8px; color:var(--gold); font-weight:700; margin-bottom:0.5rem;">' + (_esC ? 'Guía de Ventas' : 'Sales Cheat Sheet') + '</div>'
           + '<div style="display:flex; flex-direction:column; gap:0.4rem;">'
           + '<div><span style="font-size:0.6rem; color:var(--gold); font-weight:700; letter-spacing:1px; text-transform:uppercase;">Lead with</span><div style="font-size:0.78rem; color:var(--cream); line-height:1.4; margin-top:0.15rem;">' + notes.lead + '</div></div>'
           + '<div><span style="font-size:0.6rem; color:var(--gold); font-weight:700; letter-spacing:1px; text-transform:uppercase;">Demo hook</span><div style="font-size:0.78rem; color:var(--cream); line-height:1.4; margin-top:0.15rem;">' + notes.demo + '</div></div>'
@@ -5923,9 +6119,9 @@
 
       el.innerHTML =
         '<div style="background:linear-gradient(135deg, rgba(212,168,75,0.12), rgba(212,168,75,0.04)); border:1px solid rgba(212,168,75,0.35); border-radius:14px; padding:0.85rem 1rem;">'
-        + (triggerLbl ? '<div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:1.8px; color:var(--gold); font-weight:700; margin-bottom:0.25rem;">Came in for</div>'
+        + (triggerLbl ? '<div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:1.8px; color:var(--gold); font-weight:700; margin-bottom:0.25rem;">' + (_esC ? 'Vino por' : 'Came in for') + '</div>'
             + '<div style="font-size:1.05rem; font-weight:700; color:var(--cream); margin-bottom:0.55rem;">' + triggerLbl + '</div>' : '')
-        + (profile ? '<div style="font-size:0.7rem; color:var(--cream-dim); margin-bottom:0.5rem;">Profile: <span style="color:var(--gold); font-weight:600;">' + profile + '</span></div>' : '')
+        + (profile ? '<div style="font-size:0.7rem; color:var(--cream-dim); margin-bottom:0.5rem;">' + (_esC ? 'Perfil' : 'Profile') + ': <span style="color:var(--gold); font-weight:600;">' + profile + '</span></div>' : '')
         + '<div style="display:flex; flex-wrap:wrap; gap:0.35rem;">'
         + pills.map(function(p) {
             return '<span style="font-size:0.65rem; color:var(--cream); background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); padding:0.25rem 0.55rem; border-radius:999px;">' + p + '</span>';
@@ -5942,15 +6138,16 @@
       var html = '';
 
       // Mattresses
+      var _esH = currentLang === 'es';
       if (window._savedPicks.length === 0) {
-        html += '<div style="text-align:center; color:var(--cream-dim); font-size:0.82rem; padding:1rem 0;">No mattresses saved yet — tap "I\'m Interested" on any mattress.</div>';
+        html += '<div style="text-align:center; color:var(--cream-dim); font-size:0.82rem; padding:1rem 0;">' + (_esH ? 'No hay colchones guardados — toca "Me Interesa" en cualquier colchón.' : 'No mattresses saved yet — tap "I\'m Interested" on any mattress.') + '</div>';
       } else {
-        html += '<div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; color:var(--gold); font-weight:600; margin-bottom:0.5rem;">Mattresses</div>';
+        html += '<div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; color:var(--gold); font-weight:600; margin-bottom:0.5rem;">' + (_esH ? 'Colchones' : 'Mattresses') + '</div>';
         html += window._savedPicks.map(function(p, i) {
           return '<div style="display:flex; align-items:center; gap:0.75rem; background:linear-gradient(135deg,#1d3352,#162845); border:1.5px solid rgba(212,168,75,0.4); border-radius:12px; padding:0.75rem; position:relative; margin-bottom:0.5rem;">'
             + (p.imageUrl ? '<img src="' + p.imageUrl + '" style="width:70px; height:60px; object-fit:cover; border-radius:8px; flex-shrink:0;">' : '')
             + '<div style="flex:1;">'
-            + '<div style="font-size:0.65rem; color:var(--gold); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:0.15rem;">Pick #' + (i+1) + '</div>'
+            + '<div style="font-size:0.65rem; color:var(--gold); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:0.15rem;">' + (_esH ? 'Selección #' : 'Pick #') + (i+1) + '</div>'
             + '<div style="font-size:1rem; font-weight:700; color:var(--cream);">' + p.name + (p.tier ? ' <span class="price-tier">' + priceTierSymbol(p.tier) + '</span>' : '') + '</div>'
             + '<div style="font-size:0.72rem; color:var(--cream-dim);">' + p.brand + '</div>'
             + '<div style="font-size:0.72rem; color:var(--gold); margin-top:0.2rem;">' + p.pct + '% Match · ' + p.firmFeel + '</div>'
@@ -5963,7 +6160,7 @@
       // Accessories from cart
       var accs = Object.values(window._accCart || {});
       if (accs.length > 0) {
-        html += '<div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; color:var(--gold); font-weight:600; margin-top:0.75rem; margin-bottom:0.5rem;">Accessories</div>';
+        html += '<div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; color:var(--gold); font-weight:600; margin-top:0.75rem; margin-bottom:0.5rem;">' + (_esH ? 'Accesorios' : 'Accessories') + '</div>';
         html += '<div style="display:flex; flex-wrap:wrap; gap:0.5rem;">';
         html += accs.map(function(a) {
           return '<div style="display:flex; align-items:center; gap:0.5rem; background:rgba(255,255,255,0.05); border:1px solid rgba(212,168,75,0.25); border-radius:8px; padding:0.4rem 0.75rem;">'
@@ -6009,7 +6206,9 @@
       const bar = document.getElementById('accCartBar');
       const countEl = document.getElementById('accCartCount');
       if (bar) bar.style.display = count > 0 ? 'flex' : 'none';
-      if (countEl) countEl.textContent = count + (count === 1 ? ' item added to your list' : ' items added to your list');
+      if (countEl) countEl.textContent = currentLang === 'es'
+        ? count + (count === 1 ? ' artículo agregado a tu lista' : ' artículos agregados a tu lista')
+        : count + (count === 1 ? ' item added to your list' : ' items added to your list');
       if (typeof analytics !== 'undefined') {
         analytics.recommendedAccessories = Object.entries(window._accCart).map(([k,v]) => ({ name: v.name, category: v.category, imageUrl: v.imageUrl || '' }));
         window._updatePicksBadge && window._updatePicksBadge();
@@ -6021,7 +6220,10 @@
         analytics.log('session_ended', analytics.getSummary());
         console.log('[DreamFinder] Session Summary:', JSON.stringify(analytics.getSummary(), null, 2));
       } catch(e) { console.warn('Analytics log failed:', e); }
-      
+
+      // Reset language to English
+      if (currentLang !== 'en') switchLanguage('en');
+
       // Reset cart
       window._accCart = {};
       const bar = document.getElementById('accCartBar');
@@ -6119,7 +6321,7 @@
         return;
       }
       tray.style.display = 'block';
-      count.textContent = arr.length + ' of 2 selected';
+      count.textContent = currentLang === 'es' ? arr.length + ' de 2 seleccionados' : arr.length + ' of 2 selected';
       slots.innerHTML = arr.map(function(id) {
         var d = (window._drawerData && window._drawerData[id]) || null;
         var name = d ? d.m.name : id;
@@ -6155,16 +6357,18 @@
           return '<span class="compare-col-chip">' + (f.emoji || '') + ' ' + f.name + '</span>';
         }).join('');
         var isWinner = pctWinner === i;
+        var _esCmp = currentLang === 'es';
+        var _tierNames = _esCmp ? {gold:'Oro',silver:'Plata',bronze:'Bronce'} : {gold:'Gold',silver:'Silver',bronze:'Bronze'};
         return '<div class="compare-col' + (isWinner ? ' winner' : '') + '">'
           + (m.imageUrl ? '<div class="compare-col-img"><img src="' + m.imageUrl + '" alt="' + m.name + '"></div>' : '')
           + '<div>'
           +   '<div class="compare-col-name">' + m.name + ' <span class="price-tier">' + priceTierSymbol(tier) + '</span></div>'
           +   '<div class="compare-col-brand">' + m.brand + (m.subBrand ? ' · ' + m.subBrand : '') + '</div>'
           + '</div>'
-          + '<div class="compare-col-stat"><span class="compare-col-stat-label">Match</span><span class="compare-col-stat-val ' + (isWinner ? 'highlight' : '') + '">' + data.pct + '%</span></div>'
-          + '<div class="compare-col-stat"><span class="compare-col-stat-label">Firmness</span><span class="compare-col-stat-val">' + m.firmness + '/10 · ' + firmLabel + '</span></div>'
-          + '<div class="compare-col-stat"><span class="compare-col-stat-label">Tier</span><span class="compare-col-stat-val">' + (tier.charAt(0).toUpperCase() + tier.slice(1)) + '</span></div>'
-          + '<div class="compare-col-stat"><span class="compare-col-stat-label">Local?</span><span class="compare-col-stat-val">' + (m.locallyMade ? 'Made locally' : '—') + '</span></div>'
+          + '<div class="compare-col-stat"><span class="compare-col-stat-label">' + (_esCmp ? 'Compatibilidad' : 'Match') + '</span><span class="compare-col-stat-val ' + (isWinner ? 'highlight' : '') + '">' + data.pct + '%</span></div>'
+          + '<div class="compare-col-stat"><span class="compare-col-stat-label">' + (_esCmp ? 'Firmeza' : 'Firmness') + '</span><span class="compare-col-stat-val">' + m.firmness + '/10 · ' + firmLabel + '</span></div>'
+          + '<div class="compare-col-stat"><span class="compare-col-stat-label">' + (_esCmp ? 'Nivel' : 'Tier') + '</span><span class="compare-col-stat-val">' + (_tierNames[tier] || (tier.charAt(0).toUpperCase() + tier.slice(1))) + '</span></div>'
+          + '<div class="compare-col-stat"><span class="compare-col-stat-label">' + (_esCmp ? '¿Local?' : 'Local?') + '</span><span class="compare-col-stat-val">' + (m.locallyMade ? (_esCmp ? 'Hecho localmente' : 'Made locally') : '—') + '</span></div>'
           + '<div class="compare-col-chips">' + chips + '</div>'
           + '</div>';
       }
@@ -6244,7 +6448,7 @@
       <button onclick="document.getElementById('privacyOverlay').classList.remove('visible');" style="position:absolute; top:0.75rem; right:0.75rem; background:none; border:none; color:rgba(248,246,241,0.5); font-size:1.2rem; cursor:pointer; font-family:inherit; padding:0.25rem;">&times;</button>
       <div style="font-size:0.9rem; font-weight:700; color:#d4a84b; margin-bottom:0.75rem;">Privacy</div>
       <div style="font-size:0.68rem; color:rgba(248,246,241,0.7); line-height:1.65; margin-bottom:1rem;">
-        <span data-store="privacy-policy">DreamFinder collects your name, email, and optional phone number to deliver your mattress recommendations. Your data is only used for this purpose and is never sold or shared with third parties. To have your information removed, contact The Furniture Market of Texarkana.</span>
+        <span data-store="privacy-policy">DreamFinder collects your name, email, and optional phone number to deliver your mattress recommendations. Your data is only used for this purpose and is never sold or shared with third parties. To have your information removed, contact your local Bel Furniture store.</span>
       </div>
       <div style="font-size:0.9rem; font-weight:700; color:#d4a84b; margin-bottom:0.75rem;">Disclaimer</div>
       <div style="font-size:0.68rem; color:rgba(248,246,241,0.7); line-height:1.65;">
@@ -6276,7 +6480,7 @@
       var intBtn = document.getElementById('drawerInterestedBtn');
       if (intBtn) {
         var alreadySaved = window._savedPicks && window._savedPicks.some(function(p) { return p.id === mattressId; });
-        intBtn.textContent = alreadySaved ? '✓ Already Saved' : '⭐ I\'m Interested In This One';
+        intBtn.textContent = alreadySaved ? (currentLang === 'es' ? '✓ Ya Guardado' : '✓ Already Saved') : (currentLang === 'es' ? '⭐ Me Interesa Este' : '⭐ I\'m Interested In This One');
         intBtn.style.background = alreadySaved ? 'linear-gradient(180deg,#6ec79a,#4caf6e)' : '';
       }
 
@@ -6285,7 +6489,7 @@
       var prevBtn = document.getElementById('drawerPrevBtn');
       var nextBtn = document.getElementById('drawerNextBtn');
       if (navLabel && window._drawerOrder.length > 1) {
-        navLabel.textContent = (window._drawerCurrentIndex + 1) + ' of ' + window._drawerOrder.length;
+        navLabel.textContent = (window._drawerCurrentIndex + 1) + (currentLang === 'es' ? ' de ' : ' of ') + window._drawerOrder.length;
         prevBtn.style.opacity = window._drawerCurrentIndex > 0 ? '1' : '0.3';
         prevBtn.style.pointerEvents = window._drawerCurrentIndex > 0 ? 'auto' : 'none';
         nextBtn.style.opacity = window._drawerCurrentIndex < window._drawerOrder.length - 1 ? '1' : '0.3';
@@ -6308,7 +6512,7 @@
       if (imgSrc) {
         imgEl.innerHTML = '<img src="'+imgSrc+'" alt="'+m.name+'">';
         imgEl.className = 'drawer-mattress-img';
-        heroEl.innerHTML = '<img src="'+imgSrc+'" alt="'+m.name+'" style="width:100%;height:100%;object-fit:contain;display:block;">';
+        heroEl.innerHTML = '<img src="'+imgSrc+'" alt="'+m.name+'" style="width:100%;height:100%;object-fit:cover;display:block;">';
       } else {
         imgEl.textContent = 'bed';
         imgEl.className = 'drawer-mattress-img no-img';
@@ -6318,9 +6522,10 @@
       document.getElementById('drawerBrand').textContent = m.brand + (m.subBrand ? ' - ' + m.subBrand : '');
       var priceSym = priceTierSymbol(d.tier || '');
       document.getElementById('drawerName').innerHTML = m.name + (priceSym ? ' <span class="price-tier">' + priceSym + '</span>' : '');
-      document.getElementById('drawerSub').textContent = (m.tags||[]).join(' - ');
-      document.getElementById('drawerMatch').textContent = d.pct + '% Match';
+      document.getElementById('drawerSub').textContent = (mField(m, 'tags')||[]).join(' - ');
+      document.getElementById('drawerMatch').textContent = d.pct + '% ' + (currentLang === 'es' ? 'Compatibilidad' : 'Match');
 
+      var _drawerNeedBadge = currentLang === 'es' ? 'TU NECESIDAD' : 'YOUR NEED';
       document.getElementById('drawerFeats').innerHTML = d.feats.slice(0,5).map(function(f){
         return '<div class="drawer-feat-row'+(f.matched?' drawer-matched':'')+'">'+
           '<span class="drawer-feat-icon">'+f.emoji+'</span>'+
@@ -6328,17 +6533,17 @@
           '<div class="drawer-feat-name">'+f.name+'</div>'+
           '<div class="drawer-feat-why">'+f.why+'</div>'+
           '</div>'+
-          (f.matched?'<span class="drawer-feat-badge">YOUR NEED</span>':'')+
+          (f.matched?'<span class="drawer-feat-badge">'+_drawerNeedBadge+'</span>':'')+
           '</div>';
       }).join('');
 
-      var r = m.reasons || {};
-      document.getElementById('drawerReason').textContent = r['default'] || r.cooling || r.pressureRelief || r.support || 'A great match for your sleep profile.';
-      document.getElementById('drawerFirmLabel').textContent = 'Firmness ' + m.firmness + '/10';
+      var r = currentLang === 'es' && m.reasons_es ? m.reasons_es : (m.reasons || {});
+      document.getElementById('drawerReason').textContent = r['default'] || r.cooling || r.pressureRelief || r.support || (currentLang === 'es' ? 'Una gran opción para tu perfil de sueño.' : 'A great match for your sleep profile.');
+      document.getElementById('drawerFirmLabel').textContent = (currentLang === 'es' ? 'Firmeza ' : 'Firmness ') + m.firmness + '/10';
       document.getElementById('drawerFirmFeel').textContent = d.firmFeel;
       document.getElementById('drawerFirmFill').style.width = '0%';
       setTimeout(function(){document.getElementById('drawerFirmFill').style.width=(m.firmness*10)+'%';},100);
-      document.getElementById('drawerTags').innerHTML = (m.tags||[]).map(function(t){return '<span class="drawer-tag">'+t+'</span>';}).join('');
+      document.getElementById('drawerTags').innerHTML = (mField(m, 'tags')||[]).map(function(t){return '<span class="drawer-tag">'+t+'</span>';}).join('');
       document.getElementById('drawerScroll').scrollTop = 0;
       document.getElementById('drawerBackdrop').classList.add('open');
       drawer.classList.add('drawer-open');
