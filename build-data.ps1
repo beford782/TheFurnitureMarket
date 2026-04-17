@@ -1,9 +1,9 @@
 # build-data.ps1 - Converts data/mattresses.csv to data/mattresses.json
 # Run from repo root: .\build-data.ps1
 
-$csvPath = "data\mattresses.csv"
-$jsonPath = "data\mattresses.json"
-$esCsvPath = "data\mattresses-es.csv"
+$csvPath = Join-Path $PSScriptRoot "data\mattresses.csv"
+$jsonPath = Join-Path $PSScriptRoot "data\mattresses.json"
+$esCsvPath = Join-Path $PSScriptRoot "data\mattresses-es.csv"
 
 if (-not (Test-Path $csvPath)) {
     Write-Error "CSV not found at $csvPath"
@@ -99,7 +99,7 @@ foreach ($row in $rows) {
     # Auto-resolve image URL from images/mattresses/ folder
     $imageUrl = ""
     $imgName = $row.name.Trim().ToLower()
-    $imgDir = "images\mattresses"
+    $imgDir = Join-Path $PSScriptRoot "images\mattresses"
     foreach ($ext in @("webp", "jpg", "png")) {
         if (Test-Path "$imgDir\$imgName.$ext") {
             $imageUrl = "images/mattresses/$imgName.$ext"
@@ -161,3 +161,4 @@ $json = $result | ConvertTo-Json -Depth 4
 
 $counts = "gold: $($result.gold.Count), silver: $($result.silver.Count), bronze: $($result.bronze.Count)"
 Write-Host "Built $jsonPath - $counts"
+
