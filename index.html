@@ -4236,29 +4236,29 @@
     const ACCESSORIES = [
       // Bases & Foundations (shown first)
       { id: 'base-good-adjustable', name: 'Good Adjustable Base', category: 'Foundations & Support', price: 0,
-        image: 'images/accessories/base-good-adjustable.webp',
+        image: 'images/accessories/base-good-adjustable.jpg',
         description: 'Adjustable base with head and foot positioning for customized comfort and better sleep',
         subType: 'adjustable',
         matchTags: ['snoring', 'back_pain'], matchScores: { back_pain: 3, snoring: 3, default: 2 } },
 
       { id: 'base-best-adjustable', name: 'Best Adjustable Base', category: 'Foundations & Support', price: 0,
-        image: 'images/accessories/base-best-adjustable.webp',
+        image: 'images/accessories/base-best-adjustable.jpg',
         description: 'Premium adjustable base with advanced features for the ultimate in personalized comfort',
         subType: 'adjustable',
         matchTags: ['snoring', 'back_pain'], matchScores: { back_pain: 4, snoring: 4, premium: 3 } },
 
       { id: 'base-foundation', name: 'Regular Size Foundation', category: 'Foundations & Support', price: 111,
-        image: 'images/accessories/base-foundation.webp',
+        image: 'images/accessories/base-foundation.jpg',
         description: 'Standard-height foundation — sturdy platform support that replaces a traditional box spring',
         subType: 'foundation',
         matchTags: ['all'], matchScores: { default: 2 } },
       { id: 'base-lowprofile', name: 'Low Profile Foundation', category: 'Foundations & Support', price: 142,
-        image: 'images/accessories/base-lowprofile.webp',
+        image: 'images/accessories/base-lowprofile.jpg',
         description: 'Reduced height foundation — ideal for taller mattresses or platform-style bed frames',
         subType: 'low_profile',
         matchTags: ['all'], matchScores: { default: 2 } },
       { id: 'base-bunkie', name: 'Bunkie Board', category: 'Foundations & Support', price: 76,
-        image: 'images/accessories/base-bunkie.webp',
+        image: 'images/accessories/base-bunkie.jpg',
         description: 'Ultra-slim 2" support board — distributes weight evenly, perfect for platform beds & bunk beds',
         subType: 'bunkie',
         matchTags: ['all'], matchScores: { default: 1 } },
@@ -5525,7 +5525,7 @@
       // Email clients (Gmail etc.) can't resolve relative image paths, so
       // convert any relative URLs (e.g. "images/mattresses/caitlin.png")
       // into absolute URLs rooted at the GitHub Pages deployment.
-      const PUBLIC_ASSET_ROOT = 'https://beford782.github.io/DreamFinder/';
+      const PUBLIC_ASSET_ROOT = 'https://beford782.github.io/TheFurnitureMarket/';
       function toAbsoluteImageUrl(u) {
         if (!u) return '';
         if (/^https?:\/\//i.test(u) || u.startsWith('//')) return u;
@@ -5615,13 +5615,13 @@
   <tr><td style="padding:8px 32px 16px;">
     <div style="font-size:10px;letter-spacing:2px;color:#c9a84c;text-transform:uppercase;margin-bottom:14px;">${_eAccLabel}</div>
     <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      ${accList.slice(0,3).map(a => `<td style="width:${Math.floor(100/Math.min(accList.length,3))}%;padding:0 4px;vertical-align:top;text-align:center;">
+      ${accList.slice(0,3).map(a => { var _w = Math.floor(536 / Math.min(accList.length, 3)) - 8; return `<td width="${_w+8}" style="padding:0 4px;vertical-align:top;text-align:center;">
         <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;overflow:hidden;">
-          ${a.imageUrl ? `<img src="${a.imageUrl}" alt="${a.name}" style="width:100%;height:60px;object-fit:cover;display:block;">` : '<div style="height:60px;background:#1a2744;"></div>'}
+          ${a.imageUrl ? `<img src="${a.imageUrl}" width="${_w}" height="90" alt="${a.name}" style="display:block;border:0;max-width:100%;height:auto;outline:none;text-decoration:none;">` : `<div style="height:90px;background:#1a2744;"></div>`}
           <div style="padding:6px 8px;font-size:11px;color:#ffffff;font-weight:600;">${a.name}</div>
           <div style="padding:0 8px 8px;font-size:10px;color:#a0b0c8;">${a.category}</div>
         </div>
-      </td>`).join('')}
+      </td>`; }).join('')}
     </tr></table>
   </td></tr>` : ''}
   <tr><td style="padding:20px 32px 28px;text-align:center;border-top:1px solid rgba(255,255,255,0.08);">
